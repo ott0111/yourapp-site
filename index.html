@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YourApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 28px;
+    }
+
+    .box {
+      background: #1a1a1a;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.25);
+    }
+
+    .price {
+      color: #00ffff;
+      font-size: 22px;
+      margin: 15px 0;
+    }
+
+    input[type=submit] {
+      background: #00ffff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background: #00cccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>YourApp</h1>
+  <p>Unlock Full Features Instantly</p>
+
+  <div class="box">
+    <h2>Trial Version</h2>
+    <p>Limited features available</p>
+    <div class="price">FREE</div>
+  </div>
+
+  <div class="box">
+    <h2>Premium Version</h2>
+    <p>Full access + future updates</p>
+    <div class="price">$9.99 CAD</div>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="item_name" value="YourApp Premium Key">
+      <input type="hidden" name="amount" value="9.99">
+      <input type="hidden" name="currency_code" value="CAD">
+      <input type="submit" value="Buy Now">
+    </form>
+
+  </div>
+
+</body>
+</html>
