@@ -6,44 +6,55 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #141421);
       color: white;
       text-align: center;
     }
 
     h1 {
-      margin-top: 40px;
-      font-size: 28px;
+      margin-top: 50px;
+      font-size: 32px;
     }
 
-    .box {
-      background: #1a1a1a;
+    p {
+      opacity: 0.8;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
       margin: 30px auto;
-      padding: 25px;
-      border-radius: 15px;
+      padding: 30px;
+      border-radius: 20px;
       width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.25);
+      max-width: 420px;
+      box-shadow: 0 0 30px rgba(0,255,255,0.2);
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
     }
 
     .price {
       color: #00ffff;
-      font-size: 22px;
+      font-size: 24px;
       margin: 15px 0;
     }
 
     input[type=submit] {
-      background: #00ffff;
+      background: linear-gradient(90deg, #00ffff, #00bfff);
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 14px 25px;
+      border-radius: 12px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.3s ease;
     }
 
     input[type=submit]:hover {
-      background: #00cccc;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -51,25 +62,29 @@
 <body>
 
   <h1>YourApp</h1>
-  <p>Unlock Full Features Instantly</p>
+  <p>Unlock premium features instantly.</p>
 
-  <div class="box">
+  <div class="card">
     <h2>Trial Version</h2>
-    <p>Limited features available</p>
+    <p>Limited features included</p>
     <div class="price">FREE</div>
   </div>
 
-  <div class="box">
-    <h2>Premium Version</h2>
-    <p>Full access + future updates</p>
+  <div class="card">
+    <h2>Premium License</h2>
+    <p>Full access + lifetime updates</p>
     <div class="price">$9.99 CAD</div>
 
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
       <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
       <input type="hidden" name="item_name" value="YourApp Premium Key">
       <input type="hidden" name="amount" value="9.99">
       <input type="hidden" name="currency_code" value="CAD">
+
+      <!-- Redirect after payment -->
+      <input type="hidden" name="return" value="https://yourdomain.com/success.html">
+
       <input type="submit" value="Buy Now">
     </form>
 
