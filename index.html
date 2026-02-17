@@ -1,128 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YourApp</title>
+  <title>YZY Tweaks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1e1e2f, #141421);
+      background: #0a0a0f;
       color: white;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Luxury purple ambient glow */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -300px;
+      left: -300px;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(140,0,255,0.25), transparent 70%);
+      filter: blur(150px);
+      z-index: -1;
+    }
+
+    .logo {
+      margin-top: 80px;
+    }
+
+    .logo img {
+      width: 160px;
+      filter: drop-shadow(0 0 25px rgba(140,0,255,0.7));
     }
 
     h1 {
-      margin-top: 60px;
-      font-size: 34px;
+      font-size: 40px;
+      margin: 20px 0 5px 0;
+      letter-spacing: 4px;
     }
 
-    p {
-      opacity: 0.8;
-    }
-
-    .container {
-      padding: 20px;
+    .subtitle {
+      opacity: 0.6;
+      margin-bottom: 60px;
+      font-size: 14px;
+      letter-spacing: 3px;
     }
 
     .card {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(10px);
-      margin: 25px auto;
-      padding: 30px;
-      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(140,0,255,0.3);
+      margin: 30px auto;
+      padding: 40px;
+      border-radius: 24px;
       width: 90%;
       max-width: 420px;
-      box-shadow: 0 0 30px rgba(0,255,255,0.2);
+      backdrop-filter: blur(15px);
       transition: 0.3s ease;
     }
 
     .card:hover {
-      transform: scale(1.05);
+      border: 1px solid rgba(180,0,255,0.7);
+      box-shadow: 0 0 35px rgba(150,0,255,0.35);
+      transform: translateY(-6px);
     }
 
     .price {
-      color: #00ffff;
-      font-size: 26px;
-      margin: 15px 0;
+      font-size: 30px;
+      color: #b366ff;
+      margin: 18px 0;
+      font-weight: bold;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 15px;
-      padding: 14px 25px;
-      border-radius: 12px;
+      margin-top: 20px;
+      padding: 15px 30px;
+      border-radius: 14px;
       border: none;
-      background: linear-gradient(90deg, #00ffff, #00bfff);
+      background: linear-gradient(90deg, #7a00ff, #b366ff);
       font-weight: bold;
       cursor: pointer;
+      font-size: 15px;
+      color: white;
       transition: 0.3s ease;
-      font-size: 16px;
-      color: black;
-      text-decoration: none;
     }
 
     .btn:hover {
-      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(160,0,255,0.8);
+      transform: scale(1.07);
     }
 
     .free-btn {
-      background: #444;
-      color: white;
+      background: #1c1c22;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    form {
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>YourApp</h1>
-  <p>Select your plan</p>
+  <div class="logo">
+    <img src="YZY.png" alt="YZY Logo">
+  </div>
 
-  <div class="container">
+  <h1>YZY Tweaks</h1>
+  <div class="subtitle">ELITE PERFORMANCE SUITE</div>
 
-    <!-- Trial -->
-    <div class="card">
-      <h2>Trial</h2>
-      <p>Limited features • Free access</p>
-      <div class="price">FREE</div>
-      <a href="#" class="btn free-btn">Download Trial</a>
-    </div>
+  <!-- Trial -->
+  <div class="card">
+    <h2>Trial</h2>
+    <p>Limited features • Free access</p>
+    <div class="price">FREE</div>
+    <a href="#" class="btn free-btn">Download Trial</a>
+  </div>
 
-    <!-- Pro -->
-    <div class="card">
-      <h2>Pro</h2>
-      <p>Full features • $7 CAD</p>
-      <div class="price">$7</div>
+  <!-- Pro -->
+  <div class="card">
+    <h2>Pro</h2>
+    <p>All tweaks unlocked • $7 CAD</p>
+    <div class="price">$7</div>
 
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="yeezy5731@gmail.com">
-        <input type="hidden" name="item_name" value="YourApp Pro License">
-        <input type="hidden" name="amount" value="7.00">
-        <input type="hidden" name="currency_code" value="CAD">
-        <input type="hidden" name="return" value="https://yzytweaks.netlify.app/">
-        <input type="submit" class="btn" value="Buy Pro">
-      </form>
-    </div>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="item_name" value="YZY Tweaks Pro License">
+      <input type="hidden" name="amount" value="7.00">
+      <input type="hidden" name="currency_code" value="CAD">
+      <input type="hidden" name="return" value="https://yzytweaks.netlify.app/">
+      <input type="submit" class="btn" value="Buy Pro">
+    </form>
+  </div>
 
-    <!-- Lifetime -->
-    <div class="card">
-      <h2>Lifetime</h2>
-      <p>Unlimited access • $15 CAD</p>
-      <div class="price">$15</div>
+  <!-- Lifetime -->
+  <div class="card">
+    <h2>Lifetime</h2>
+    <p>Unlimited access • $15 CAD</p>
+    <div class="price">$15</div>
 
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="yeezy5731@gmail.com">
-        <input type="hidden" name="item_name" value="YourApp Lifetime License">
-        <input type="hidden" name="amount" value="15.00">
-        <input type="hidden" name="currency_code" value="CAD">
-        <input type="hidden" name="return" value="https://yzytweaks.netlify.app/">
-        <input type="submit" class="btn" value="Buy Lifetime">
-      </form>
-    </div>
-
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com>
+      <input type="hidden" name="item_name" value="YZY Tweaks Lifetime License">
+      <input type="hidden" name="amount" value="15.00">
+      <input type="hidden" name="currency_code" value="CAD">
+      <input type="hidden" name="return" value="https://yzytweaks.netlify.app/">
+      <input type="submit" class="btn" value="Buy Lifetime">
+    </form>
   </div>
 
 </body>
