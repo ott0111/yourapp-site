@@ -77,10 +77,13 @@ function getKey() {
     return;
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbwsimq4YuhvN7qH5rFFItE5sh1tKSQ9T8Z_xbPB9zdCbh0eq4llWI9Y_sAyMzVis6399Q/exec", {
-    method: "POST",
-    body: JSON.stringify({ email: email })
+  fetch("https://script.google.com/macros/s/AKfycbxUp0u7-NZPntp9bgVZuce_D23Mj55lsZVpdDKSF0Uzl9EfmxGBQYpTSs9mqTLDTUM8/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    mode: "getKey",
+    email: email
   })
+})
   .then(response => response.text())
   .then(data => {
     document.getElementById("keyBox").innerHTML = "Your License Key: <br><br>" + data;
