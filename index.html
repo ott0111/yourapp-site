@@ -1,159 +1,114 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YZY Tweaks</title>
+  <title>Payment Successful</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0f;
+      background: linear-gradient(135deg, #0f0f1a, #16162a);
       color: white;
       text-align: center;
-      overflow-x: hidden;
-    }
-
-    /* Luxury purple ambient glow */
-    body::before {
-      content: "";
-      position: fixed;
-      top: -300px;
-      left: -300px;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(140,0,255,0.25), transparent 70%);
-      filter: blur(150px);
-      z-index: -1;
-    }
-
-    .logo {
-      margin-top: 80px;
-    }
-
-    .logo img {
-      width: 160px;
-      filter: drop-shadow(0 0 25px rgba(140,0,255,0.7));
-    }
-
-    h1 {
-      font-size: 40px;
-      margin: 20px 0 5px 0;
-      letter-spacing: 4px;
-    }
-
-    .subtitle {
-      opacity: 0.6;
-      margin-bottom: 60px;
-      font-size: 14px;
-      letter-spacing: 3px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(140,0,255,0.3);
-      margin: 30px auto;
       padding: 40px;
-      border-radius: 24px;
-      width: 90%;
-      max-width: 420px;
-      backdrop-filter: blur(15px);
-      transition: 0.3s ease;
     }
 
-    .card:hover {
-      border: 1px solid rgba(180,0,255,0.7);
-      box-shadow: 0 0 35px rgba(150,0,255,0.35);
-      transform: translateY(-6px);
-    }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    p { opacity: 0.8; }
 
-    .price {
-      font-size: 30px;
-      color: #b366ff;
-      margin: 18px 0;
-      font-weight: bold;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 30px;
-      border-radius: 14px;
+    input {
+      padding: 14px;
+      border-radius: 12px;
       border: none;
-      background: linear-gradient(90deg, #7a00ff, #b366ff);
+      width: 85%;
+      max-width: 320px;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 14px 25px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg, #8A2BE2, #00FFFF);
       font-weight: bold;
       cursor: pointer;
-      font-size: 15px;
-      color: white;
       transition: 0.3s ease;
+      color: black;
     }
 
-    .btn:hover {
-      box-shadow: 0 0 25px rgba(160,0,255,0.8);
-      transform: scale(1.07);
+    button:hover { transform: scale(1.05); }
+
+    #keyBox {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #00ffff;
+      word-break: break-all;
     }
 
-    .free-btn {
-      background: #1c1c22;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    form {
-      margin: 0;
+    #downloadPanel {
+      margin-top: 30px;
+      display: none;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="logo">
-    <img src="YZY.png" alt="YZY Logo">
-  </div>
+<h1>Payment Successful 🎉</h1>
+<p>Enter your email to retrieve your license key</p>
 
-  <h1>YZY Tweaks</h1>
-  <div class="subtitle">ELITE PERFORMANCE SUITE</div>
+<input type="email" id="email" placeholder="Enter your email" required>
+<br>
+<button onclick="getKey()">Get My Key</button>
 
-  <!-- Trial -->
-  <div class="card">
-    <h2>Trial</h2>
-    <p>Limited features • Free access</p>
-    <div class="price">FREE</div>
-    <a href="#" class="btn free-btn">Download Trial</a>
-  </div>
+<div id="keyBox"></div>
 
-  <!-- Pro -->
-  <div class="card">
-    <h2>Pro</h2>
-    <p>All tweaks unlocked • $7 CAD</p>
-    <div class="price">$7</div>
+<div id="downloadPanel">
+  <h2>Download Your Toolkit</h2>
+  <a href="/downloads/YZY_Performance_Toolkit.exe" download>
+    <button>Download Now</button>
+  </a>
+</div>
 
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="yeezy5731@gmail.com">
-      <input type="hidden" name="item_name" value="YZY Tweaks Pro License">
-      <input type="hidden" name="amount" value="7.00">
-      <input type="hidden" name="currency_code" value="CAD">
-      <input type="hidden" name="return" value="https://yzytweaks.netlify.app/">
-      <input type="submit" class="btn" value="Buy Pro">
-    </form>
-  </div>
+<script>
+function getKey() {
+  const email = document.getElementById("email").value;
 
-  <!-- Lifetime -->
-  <div class="card">
-    <h2>Lifetime</h2>
-    <p>Unlimited access • $15 CAD</p>
-    <div class="price">$15</div>
+  if (!email) {
+    alert("Please enter your email.");
+    return;
+  }
 
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="yeezy5731@gmail.com>
-      <input type="hidden" name="item_name" value="YZY Tweaks Lifetime License">
-      <input type="hidden" name="amount" value="15.00">
-      <input type="hidden" name="currency_code" value="CAD">
-      <input type="hidden" name="return" value="https://yzytweaks.netlify.app/">
-      <input type="submit" class="btn" value="Buy Lifetime">
-    </form>
-  </div>
+  fetch("https://script.google.com/macros/s/AKfycbxA7wXKEuu5SCFL6mXVzmICyCqH-j-flKP9U97-MC84smHFN63QwrA6cFjwYRtSRYH8aw/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      mode: "getKey",
+      email: email
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+
+    if (data.status === "READY") {
+      document.getElementById("keyBox").innerHTML =
+        "Your License Key:<br><br><b>" + data.key + "</b>";
+
+      document.getElementById("downloadPanel").style.display = "block";
+    } else {
+      document.getElementById("keyBox").innerHTML =
+        "No paid order found.";
+    }
+
+  })
+  .catch(() => {
+    document.getElementById("keyBox").innerHTML =
+      "Error retrieving key.";
+  });
+}
+</script>
 
 </body>
 </html>
