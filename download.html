@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YZY Performance Toolkit</title>
+  <title>Download - YZY Performance Toolkit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body{
       margin:0;
@@ -12,50 +13,131 @@
       padding:40px;
       text-align:center;
     }
-    h1{font-size:34px;}
-    p{opacity:0.8;}
-    button{
+
+    h1{font-size:36px;margin-bottom:10px;}
+    p{opacity:0.8;margin-bottom:30px;}
+
+    .card{
+      background:#1e1e30;
+      padding:40px;
+      border-radius:20px;
+      max-width:600px;
+      margin:0 auto;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 0 40px rgba(138,43,226,0.25);
+      animation:fadeIn 0.6s ease;
+    }
+
+    .key-box{
+      margin-top:20px;
+      padding:15px;
+      background:#111;
+      border-radius:12px;
+      font-family:monospace;
+      font-size:18px;
+      letter-spacing:2px;
+      border:1px solid rgba(255,255,255,0.1);
+      word-break:break-all;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:none;
       margin-top:15px;
-      padding:15px 25px;
+      font-size:16px;
+    }
+
+    button{
+      margin-top:20px;
+      padding:16px 28px;
       border-radius:14px;
       border:none;
       background:linear-gradient(90deg,#8A2BE2,#00FFFF);
       font-weight:bold;
       cursor:pointer;
       color:black;
+      font-size:16px;
+      width:100%;
+      transition:0.3s ease;
     }
-    .trial{
-      background:#1e1e30;
-      color:white;
-      border:1px solid rgba(255,255,255,0.1);
+
+    button:hover{
+      transform:scale(1.03);
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
     }
   </style>
 </head>
+
 <body>
 
 <h1>YZY Performance Toolkit</h1>
-<p>Performance tweaks & game optimizer</p>
+<p>Enter your PayPal email to receive your activation key</p>
 
-<h2>Trial</h2>
-<a href="/app.exe" download>
-  <button class="trial">Download Trial</button>
-</a>
+<div class="card">
 
-<h2>Pro / Lifetime</h2>
+  <input type="email" id="emailInput" placeholder="Enter PayPal Email" />
 
-<!-- Replace with your PayPal hosted button link -->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="yeezy5731@gmail.com">
-  <input type="hidden" name="item_name" value="YZY Toolkit Pro">
-  <input type="hidden" name="amount" value="19.99">
-  <input type="hidden" name="currency_code" value="USD">
+  <button onclick="getLicense()">Generate Key</button>
 
-  <!-- IMPORTANT RETURN URL -->
-  <input type="hidden" name="return" value="https://yourdomain.vercel.app/download.html">
+  <div id="keyDisplay" class="key-box" style="display:none;"></div>
 
-  <button type="submit">Buy Pro</button>
-</form>
+  <button id="downloadBtn" style="display:none;" onclick="downloadApp()">Download Toolkit</button>
+
+</div>
+
+<script>
+  // 🔥 PASTE YOUR DEPLOYED GOOGLE WEB APP URL HERE
+  const licenseServer = "https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec";
+
+  async function getLicense() {
+
+    const email = document.getElementById("emailInput").value;
+
+    if(!email){
+      alert("Enter your PayPal email.");
+      return;
+    }
+
+    try {
+
+      const response = await fetch(licenseServer, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mode: "getKey",
+          email: email
+        })
+      });
+
+      const data = await response.json();
+
+      if(data.status === "READY"){
+
+        document.getElementById("keyDisplay").style.display = "block";
+        document.getElementById("keyDisplay").innerText = data.key;
+
+        document.getElementById("downloadBtn").style.display = "block";
+
+      } else {
+        alert("No paid order found for this email.");
+      }
+
+    } catch(err){
+      alert("Server error. Try again.");
+    }
+  }
+
+  function downloadApp(){
+    window.location.href = "/app.exe";
+  }
+
+</script>
 
 </body>
 </html>
