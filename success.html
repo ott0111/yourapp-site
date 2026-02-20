@@ -1,145 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Download YZY Toolkit</title>
+  <title>Payment Successful - YZY Toolkit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body{
       margin:0;
       font-family:'Segoe UI',sans-serif;
-      background: linear-gradient(135deg,#0f0f1a,#16162a);
+      background:linear-gradient(135deg,#0f0f1a,#16162a);
       color:white;
+      padding:40px;
       text-align:center;
-      padding:40px 16px;
-      display:flex;
-      justify-content:center;
     }
-    .wrap{ max-width:720px; width:100%; }
-    .card{
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius:18px;
-      padding:24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-    h1{ margin:0 0 10px; font-size:26px; }
-    p{ margin:0 0 16px; opacity:0.85; }
-    input{
-      padding:14px;
-      border-radius:12px;
-      border:none;
-      width:90%;
-      max-width:360px;
-      font-size:15px;
-      outline:none;
-    }
-    button{
-      margin-top:12px;
-      padding:14px 22px;
-      border-radius:12px;
-      border:none;
-      background: linear-gradient(90deg,#8A2BE2,#00FFFF);
-      font-weight:800;
-      cursor:pointer;
-      transition:.15s;
-      color:#061016;
-    }
-    button:hover{ transform: translateY(-1px); }
 
-    .download{ display:none; margin-top:18px; }
-    a{ text-decoration:none; }
-    .btn2{
+    h1{
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    p{
+      opacity:0.8;
+      margin-bottom:30px;
+    }
+
+    .success-card{
+      background:#1e1e30;
+      padding:40px;
+      border-radius:20px;
+      max-width:500px;
+      margin:0 auto;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 0 35px rgba(138,43,226,0.25);
+      animation:fadeIn 0.6s ease;
+    }
+
+    .badge{
       display:inline-block;
-      padding:14px 22px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.10);
-      color:white;
-      font-weight:800;
+      padding:8px 16px;
+      border-radius:30px;
+      font-weight:bold;
+      margin-bottom:15px;
+      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
+      color:black;
     }
 
-    .box{
-      margin-top:18px;
-      padding:16px;
+    .download-btn{
+      margin-top:25px;
+      padding:16px 28px;
       border-radius:14px;
-      background: rgba(0,0,0,0.35);
-      border:1px solid rgba(255,255,255,0.08);
-      text-align:left;
-      display:none;
-      word-break: break-word;
+      border:none;
+      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
+      font-weight:bold;
+      cursor:pointer;
+      color:black;
+      font-size:16px;
+      transition:0.3s ease;
+      width:100%;
     }
-    .key{ color:#00ffff; font-weight:800; }
-    .err{ color:#ff6b6b; margin-top:10px; display:none; }
-    .muted{ opacity:0.8; font-size:13px; margin-top:8px; }
+
+    .download-btn:hover{
+      opacity:0.9;
+      transform:scale(1.03);
+    }
+
+    .back-link{
+      display:block;
+      margin-top:20px;
+      opacity:0.6;
+      text-decoration:none;
+      color:white;
+      font-size:14px;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Download</h1>
-      <p>Enter your checkout email. If you have a paid plan, we’ll show your key and unlock the download button.</p>
 
-      <input type="email" id="email" placeholder="Email used at checkout" required>
-      <br>
-      <button onclick="unlock()">Unlock Download</button>
+<h1>Payment Successful 🎉</h1>
+<p>Thank you for supporting YZY Performance Toolkit</p>
 
-      <div id="error" class="err"></div>
+<div class="success-card">
 
-      <div id="keyPanel" class="box">
-        <div>✅ Your Key:</div>
-        <div class="key" id="keyText"></div>
-        <div class="muted">Use this key inside the app to unlock your plan.</div>
-      </div>
+  <!-- You can manually change this text depending on which plan -->
+  <div class="badge">Premium Activated</div>
 
-      <div id="downloadPanel" class="download">
-        <a href="/downloads/YZY_Performance_Toolkit.exe" download class="btn2">Download Toolkit</a>
-        <div class="muted">This link stays hidden unless a paid key exists.</div>
-      </div>
+  <h2>Your Download Is Ready</h2>
+  <p>Click below to download your purchased version.</p>
 
-      <div class="muted" style="margin-top:18px;">
-        Trial download is always available on <a href="/" style="color:#00ffff;">the home page</a>.
-      </div>
-    </div>
-  </div>
+  <!-- Replace this link after you send download.html -->
+  <a href="/download.html">
+    <button class="download-btn">Download Now</button>
+  </a>
 
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyj5bAUiVVrnuNvgLClUBf3rjSMWlPhdQRdd1n6GtpIC3YBHooQlSyNgW6nCr4s15HiPw/exec";
+</div>
 
-function showError(msg){
-  const el = document.getElementById("error");
-  el.style.display = "block";
-  el.textContent = msg;
-}
-function clearError(){
-  const el = document.getElementById("error");
-  el.style.display = "none";
-  el.textContent = "";
-}
-
-function unlock(){
-  clearError();
-  const email = document.getElementById("email").value.trim();
-  if(!email){ showError("Please enter your email."); return; }
-
-  fetch(SCRIPT_URL, {
-    method:"POST",
-    body: JSON.stringify({ mode:"getKey", email })
-  })
-  .then(r => r.json())
-  .then(data => {
-    if (data.status === "READY" && data.key) {
-      document.getElementById("keyText").textContent = data.key;
-      document.getElementById("keyPanel").style.display = "block";
-      document.getElementById("downloadPanel").style.display = "block";
-    } else if (data.status === "NOT_FOUND") {
-      showError("No paid key found for that email (or order not marked Paid yet).");
-    } else {
-      showError("Could not unlock. Try again.");
-    }
-  })
-  .catch(() => showError("Network error."));
-}
-</script>
+<a href="/" class="back-link">Return to Home</a>
 
 </body>
 </html>
