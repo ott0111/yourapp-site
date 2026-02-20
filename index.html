@@ -3,6 +3,7 @@
 <head>
   <title>YZY Performance Toolkit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body{
       margin:0;
@@ -12,50 +13,144 @@
       padding:40px;
       text-align:center;
     }
-    h1{font-size:34px;}
-    p{opacity:0.8;}
+
+    h1{font-size:36px;margin-bottom:10px;}
+    p{opacity:0.8;margin-bottom:40px;}
+
+    .section-title{
+      margin-top:40px;
+      font-size:22px;
+      margin-bottom:20px;
+    }
+
+    .plan-container{
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+
+    .plan-card{
+      background:#1e1e30;
+      padding:30px;
+      border-radius:20px;
+      width:300px;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 0 25px rgba(138,43,226,0.15);
+      transition:0.3s ease;
+    }
+
+    .plan-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 0 35px rgba(138,43,226,0.4);
+    }
+
+    .price{
+      font-size:28px;
+      font-weight:bold;
+      margin:15px 0;
+      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    ul{
+      list-style:none;
+      padding:0;
+      margin:15px 0;
+      opacity:0.85;
+    }
+
+    li{
+      margin-bottom:8px;
+    }
+
     button{
       margin-top:15px;
-      padding:15px 25px;
+      padding:14px 25px;
       border-radius:14px;
       border:none;
       background:linear-gradient(90deg,#8A2BE2,#00FFFF);
       font-weight:bold;
       cursor:pointer;
       color:black;
+      transition:0.3s ease;
+      width:100%;
     }
+
+    button:hover{
+      opacity:0.9;
+      transform:scale(1.03);
+    }
+
     .trial{
       background:#1e1e30;
       color:white;
       border:1px solid rgba(255,255,255,0.1);
+      width:auto;
     }
   </style>
 </head>
+
 <body>
 
 <h1>YZY Performance Toolkit</h1>
 <p>Performance tweaks & game optimizer</p>
 
-<h2>Trial</h2>
+<!-- TRIAL SECTION -->
+<div class="section-title">Trial Version</div>
 <a href="/app.exe" download>
   <button class="trial">Download Trial</button>
 </a>
 
-<h2>Pro / Lifetime</h2>
+<!-- UPGRADE SECTION -->
+<div class="section-title">Upgrade Your Plan</div>
 
-<!-- Replace with your PayPal hosted button link -->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="yeezy5731@gmail.com">
-  <input type="hidden" name="item_name" value="YZY Toolkit Pro">
-  <input type="hidden" name="amount" value="19.99">
-  <input type="hidden" name="currency_code" value="USD">
+<div class="plan-container">
 
-  <!-- IMPORTANT RETURN URL -->
-  <input type="hidden" name="return" value="https://yourdomain.vercel.app/download.html">
+  <!-- PRO PLAN -->
+  <div class="plan-card">
+    <h2>Pro Version</h2>
+    <div class="price">$7.00</div>
+    <ul>
+      <li>+20 Extra Tweaks</li>
+      <li>Advanced Optimization</li>
+      <li>Priority Support</li>
+    </ul>
 
-  <button type="submit">Buy Pro</button>
-</form>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="item_name" value="YZY Toolkit Pro">
+      <input type="hidden" name="amount" value="7.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="return" value="https://yourdomain.vercel.app/download.html">
+      <button type="submit">Buy Pro</button>
+    </form>
+  </div>
+
+  <!-- LIFETIME PLAN -->
+  <div class="plan-card">
+    <h2>Lifetime Version</h2>
+    <div class="price">$15.00</div>
+    <ul>
+      <li>+50 Extra Tweaks</li>
+      <li>All Future Updates</li>
+      <li>Maximum Performance Mode</li>
+    </ul>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
+      <input type="hidden" name="amount" value="15.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="return" value="https://yourdomain.vercel.app/download.html">
+      <button type="submit">Buy Lifetime</button>
+    </form>
+  </div>
+
+</div>
 
 </body>
 </html>
