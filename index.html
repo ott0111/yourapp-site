@@ -1,227 +1,273 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>YZY Performance Toolkit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YZY Tweaks</title>
 
-  <style>
-    body{
-      margin:0;
-      font-family:'Segoe UI',sans-serif;
-      background:linear-gradient(135deg,#0f0f1a,#16162a);
-      color:white;
-      text-align:center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-    section{
-      padding:80px 20px;
-    }
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
+    color: white;
+    overflow-x: hidden;
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 22px;
+    color: #9b5cff;
+    letter-spacing: 0.5px;
+  }
+  .nav-buttons a {
+    margin-left: 12px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+    transition: 0.25s;
+  }
+  .discord { background: #5865F2; }
+  .discord:hover { filter: brightness(0.9); transform: translateY(-1px); }
+  .youtube { background: #FF0000; }
+  .youtube:hover { filter: brightness(0.9); transform: translateY(-1px); }
 
-    h1{
-      font-size:42px;
-      margin-bottom:15px;
-    }
+  .hero {
+    text-align: center;
+    padding: 95px 20px 30px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    margin: 0;
+  }
+  .hero h1 span { color: #9b5cff; }
+  .hero p {
+    margin: 14px auto 0;
+    max-width: 720px;
+    color: #b7b7c9;
+    font-size: 18px;
+    line-height: 1.45;
+  }
 
-    h2{
-      font-size:28px;
-      margin-bottom:20px;
-    }
+  .pricing {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    padding: 48px 8% 70px;
+    flex-wrap: wrap;
+  }
 
-    p{
-      opacity:0.8;
-      max-width:700px;
-      margin:0 auto 25px auto;
-    }
+  .price-card {
+    width: 320px;
+    background: rgba(30,30,50,0.68);
+    border: 1px solid rgba(155,92,255,0.22);
+    border-radius: 22px;
+    padding: 30px;
+    backdrop-filter: blur(14px);
+    transition: 0.25s;
+    position: relative;
+  }
+  .price-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(155,92,255,0.55);
+    box-shadow: 0 0 0 1px rgba(155,92,255,0.25), 0 18px 60px rgba(0,0,0,0.35);
+  }
 
-    .gradient-text{
-      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+  .badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    background: rgba(155,92,255,0.18);
+    border: 1px solid rgba(155,92,255,0.28);
+    color: #d9c8ff;
+  }
 
-    .btn{
-      padding:16px 30px;
-      border-radius:14px;
-      border:none;
-      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
-      font-weight:bold;
-      cursor:pointer;
-      color:black;
-      font-size:16px;
-      transition:0.3s ease;
-    }
+  .price-card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .price {
+    font-size: 34px;
+    font-weight: 800;
+    color: #9b5cff;
+    margin: 10px 0 16px;
+  }
+  .muted {
+    color: #b7b7c9;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 18px;
+  }
 
-    .btn:hover{
-      transform:scale(1.05);
-      opacity:0.9;
-    }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    color: #c7c7d8;
+  }
+  li { padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  li:last-child { border-bottom: none; }
 
-    .trial-btn{
-      background:#1e1e30;
-      color:white;
-      border:1px solid rgba(255,255,255,0.1);
-    }
+  .btn {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-weight: 800;
+    cursor: pointer;
+    background: #9b5cff;
+    color: white;
+    transition: 0.25s;
+  }
+  .btn:hover { background: #7d3cff; transform: translateY(-1px); }
 
-    .features{
-      display:flex;
-      justify-content:center;
-      gap:40px;
-      flex-wrap:wrap;
-      margin-top:40px;
-    }
+  .btn-secondary {
+    width: 100%;
+    border: 1px solid rgba(155,92,255,0.35);
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-weight: 800;
+    cursor: pointer;
+    background: rgba(155,92,255,0.12);
+    color: white;
+    transition: 0.25s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-secondary:hover { background: rgba(155,92,255,0.18); transform: translateY(-1px); }
 
-    .feature-card{
-      background:#1e1e30;
-      padding:30px;
-      border-radius:20px;
-      width:280px;
-      border:1px solid rgba(255,255,255,0.1);
-      box-shadow:0 0 25px rgba(138,43,226,0.15);
-      transition:0.3s ease;
-    }
-
-    .feature-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 0 40px rgba(138,43,226,0.4);
-    }
-
-    .pricing{
-      display:flex;
-      justify-content:center;
-      gap:40px;
-      flex-wrap:wrap;
-      margin-top:40px;
-    }
-
-    .price-card{
-      background:#1e1e30;
-      padding:40px;
-      border-radius:20px;
-      width:300px;
-      border:1px solid rgba(255,255,255,0.1);
-      box-shadow:0 0 35px rgba(138,43,226,0.25);
-      transition:0.3s ease;
-    }
-
-    .price-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 0 50px rgba(138,43,226,0.5);
-    }
-
-    .price{
-      font-size:32px;
-      font-weight:bold;
-      margin:15px 0;
-      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    ul{
-      list-style:none;
-      padding:0;
-      opacity:0.85;
-    }
-
-    li{
-      margin-bottom:8px;
-    }
-
-    footer{
-      padding:40px;
-      opacity:0.6;
-      font-size:14px;
-    }
-  </style>
+  .footer {
+    text-align: center;
+    padding: 40px;
+    color: #6b6b84;
+    font-size: 13px;
+  }
+</style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section>
-  <h1><span class="gradient-text">YZY Performance Toolkit</span></h1>
-  <p>Advanced Windows optimization toolkit built for gamers, creators, and performance enthusiasts.</p>
-  <a href="/app.exe" download>
-    <button class="btn trial-btn">Download Trial</button>
-  </a>
-</section>
+<!-- CONFIG -->
+<script>
+  // Your deployed Apps Script web app endpoint:
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec";
+  // Your site:
+  const SITE = "https://yzy-tweaks.vercel.app";
+</script>
 
-<!-- FEATURES -->
-<section>
-  <h2>Why Choose YZY?</h2>
-
-  <div class="features">
-    <div class="feature-card">
-      <h3>⚡ Performance Boost</h3>
-      <p>Unlock hidden system tweaks to increase FPS and reduce latency.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>🧠 Smart Optimization</h3>
-      <p>Optimizes CPU, RAM, GPU & network settings safely.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>🔐 Secure Licensing</h3>
-      <p>HWID-locked activation system with revocation support.</p>
-    </div>
+<div class="nav">
+  <div class="logo">YZY Tweaks</div>
+  <div class="nav-buttons">
+    <a class="discord" href="https://discord.gg/m44Hj7EDkj" target="_blank" rel="noopener">Discord</a>
+    <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank" rel="noopener">YouTube</a>
   </div>
-</section>
+</div>
 
-<!-- PRICING -->
-<section>
-  <h2>Upgrade Your Experience</h2>
+<div class="hero">
+  <h1>Unlock Maximum <span>Performance</span></h1>
+  <p>Purchase a plan, then your license key will be emailed automatically. After that, activate inside the app.</p>
+</div>
 
-  <div class="pricing">
+<div class="pricing">
 
-    <!-- PRO -->
-    <div class="price-card">
-      <h3>Pro Version</h3>
-      <div class="price">$7.00</div>
-      <ul>
-        <li>+20 Advanced Tweaks</li>
-        <li>Priority Support</li>
-        <li>Performance Profiles</li>
-      </ul>
-
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="yeezy5731@gmail.com">
-        <input type="hidden" name="item_name" value="YZY Toolkit Pro">
-        <input type="hidden" name="amount" value="7.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="return" value="https://yourdomain.vercel.app/success.html">
-        <button type="submit" class="btn">Buy Pro</button>
-      </form>
-    </div>
-
-    <!-- LIFETIME -->
-    <div class="price-card">
-      <h3>Lifetime Version</h3>
-      <div class="price">$15.00</div>
-      <ul>
-        <li>+50 Premium Tweaks</li>
-        <li>All Future Updates</li>
-        <li>Maximum Optimization Mode</li>
-      </ul>
-
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="yeezy5731@gmail.com">
-        <input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
-        <input type="hidden" name="amount" value="15.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="return" value="https://yourdomain.vercel.app/success.html">
-        <button type="submit" class="btn">Buy Lifetime</button>
-      </form>
-    </div>
-
+  <!-- TRIAL -->
+  <div class="price-card">
+    <div class="badge">FREE</div>
+    <h3>Trial</h3>
+    <div class="price">$0</div>
+    <div class="muted">Start instantly</div>
+    <ul>
+      <li>Core Tweaks</li>
+      <li>Windows / CPU / GPU / Network Panels</li>
+      <li>Hardware Dashboard</li>
+    </ul>
+    <a class="btn-secondary" href="download.html?plan=trial">Go to Download</a>
   </div>
-</section>
 
-<footer>
-  © 2026 YZY Performance Toolkit • All Rights Reserved
-</footer>
+  <!-- PRO -->
+  <div class="price-card">
+    <div class="badge">POPULAR</div>
+    <h3>Pro Version</h3>
+    <div class="price">$7.00</div>
+    <div class="muted">+20 advanced tweaks</div>
+    <ul>
+      <li>+20 Advanced Tweaks</li>
+      <li>Priority Support</li>
+      <li>Performance Profiles</li>
+    </ul>
+
+    <!-- PayPal Button (WITH IPN notify_url) -->
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="item_name" value="YZY Toolkit Pro">
+      <input type="hidden" name="amount" value="7.00">
+      <input type="hidden" name="currency_code" value="USD">
+
+      <!-- Return after checkout -->
+      <input type="hidden" name="return" value="https://yzy-tweaks.vercel.app/success.html?plan=pro">
+
+      <!-- IMPORTANT: IPN URL (calls your Google Apps Script) -->
+      <input type="hidden" name="notify_url" value="https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec?mode=ipn">
+
+      <button type="submit" class="btn">Buy Pro</button>
+    </form>
+  </div>
+
+  <!-- LIFETIME -->
+  <div class="price-card">
+    <div class="badge">BEST</div>
+    <h3>Lifetime Version</h3>
+    <div class="price">$15.00</div>
+    <div class="muted">everything unlocked</div>
+    <ul>
+      <li>+50 Premium Tweaks</li>
+      <li>All Future Updates</li>
+      <li>Maximum Optimization Mode</li>
+    </ul>
+
+    <!-- PayPal Button (WITH IPN notify_url) -->
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="yeezy5731@gmail.com">
+      <input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
+      <input type="hidden" name="amount" value="15.00">
+      <input type="hidden" name="currency_code" value="USD">
+
+      <!-- Return after checkout -->
+      <input type="hidden" name="return" value="https://yzy-tweaks.vercel.app/success.html?plan=lifetime">
+
+      <!-- IMPORTANT: IPN URL (calls your Google Apps Script) -->
+      <input type="hidden" name="notify_url" value="https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec?mode=ipn">
+
+      <button type="submit" class="btn">Buy Lifetime</button>
+    </form>
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 YZY Tweaks • Keys are delivered by email after payment confirmation.
+</div>
 
 </body>
 </html>
