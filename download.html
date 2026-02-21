@@ -1,143 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Download - YZY Performance Toolkit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download - YZY Tweaks</title>
 
-  <style>
-    body{
-      margin:0;
-      font-family:'Segoe UI',sans-serif;
-      background:linear-gradient(135deg,#0f0f1a,#16162a);
-      color:white;
-      padding:40px;
-      text-align:center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-    h1{font-size:36px;margin-bottom:10px;}
-    p{opacity:0.8;margin-bottom:30px;}
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .card{
-      background:#1e1e30;
-      padding:40px;
-      border-radius:20px;
-      max-width:600px;
-      margin:0 auto;
-      border:1px solid rgba(255,255,255,0.1);
-      box-shadow:0 0 40px rgba(138,43,226,0.25);
-      animation:fadeIn 0.6s ease;
-    }
+.box {
+    width: 500px;
+    background: rgba(30,30,50,0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(155,92,255,0.25);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+}
 
-    .key-box{
-      margin-top:20px;
-      padding:15px;
-      background:#111;
-      border-radius:12px;
-      font-family:monospace;
-      font-size:18px;
-      letter-spacing:2px;
-      border:1px solid rgba(255,255,255,0.1);
-      word-break:break-all;
-    }
+h2 {
+    margin: 0 0 10px;
+    font-weight: 800;
+}
 
-    input{
-      width:100%;
-      padding:12px;
-      border-radius:10px;
-      border:none;
-      margin-top:15px;
-      font-size:16px;
-    }
+p {
+    color: #b7b7c9;
+    line-height: 1.5;
+}
 
-    button{
-      margin-top:20px;
-      padding:16px 28px;
-      border-radius:14px;
-      border:none;
-      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
-      font-weight:bold;
-      cursor:pointer;
-      color:black;
-      font-size:16px;
-      width:100%;
-      transition:0.3s ease;
-    }
+.btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 16px;
+    border: none;
+    background: #9b5cff;
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
 
-    button:hover{
-      transform:scale(1.03);
-    }
+.btn:hover {
+    background: #7d3cff;
+    transform: translateY(-2px);
+}
 
-    @keyframes fadeIn{
-      from{opacity:0;transform:translateY(20px);}
-      to{opacity:1;transform:translateY(0);}
-    }
-  </style>
+.btn-secondary {
+    margin-top: 12px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(155,92,255,0.35);
+    background: rgba(155,92,255,0.12);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: rgba(155,92,255,0.18);
+}
+</style>
 </head>
 
 <body>
 
-<h1>YZY Performance Toolkit</h1>
-<p>Enter your PayPal email to receive your activation key</p>
+<div class="box">
+    <h2>Download YZY Toolkit</h2>
+    <p>
+        If you purchased Pro or Lifetime, your license key has been emailed to you.
+        After downloading, open the app and go to the <strong>Activate</strong> tab.
+    </p>
 
-<div class="card">
-
-  <input type="email" id="emailInput" placeholder="Enter PayPal Email" />
-
-  <button onclick="getLicense()">Generate Key</button>
-
-  <div id="keyDisplay" class="key-box" style="display:none;"></div>
-
-  <button id="downloadBtn" style="display:none;" onclick="downloadApp()">Download Toolkit</button>
-
+    <a href="YZYToolkit.exe" download class="btn">Download YZYToolkit.exe</a>
+    <a href="index.html" class="btn-secondary">Back to Plans</a>
 </div>
-
-<script>
-  // 🔥 PASTE YOUR DEPLOYED GOOGLE WEB APP URL HERE
-  const licenseServer = "https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec";
-
-  async function getLicense() {
-
-    const email = document.getElementById("emailInput").value;
-
-    if(!email){
-      alert("Enter your PayPal email.");
-      return;
-    }
-
-    try {
-
-      const response = await fetch(licenseServer, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mode: "getKey",
-          email: email
-        })
-      });
-
-      const data = await response.json();
-
-      if(data.status === "READY"){
-
-        document.getElementById("keyDisplay").style.display = "block";
-        document.getElementById("keyDisplay").innerText = data.key;
-
-        document.getElementById("downloadBtn").style.display = "block";
-
-      } else {
-        alert("No paid order found for this email.");
-      }
-
-    } catch(err){
-      alert("Server error. Try again.");
-    }
-  }
-
-  function downloadApp(){
-    window.location.href = "/app.exe";
-  }
-
-</script>
 
 </body>
 </html>
