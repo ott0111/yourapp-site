@@ -14,9 +14,71 @@ body {
     background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
     color: white;
     height: 100vh;
+    overflow: hidden;
+}
+
+/* ===== LOADER ===== */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-card {
+    width: 440px;
+    background: rgba(30,30,50,0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(155,92,255,0.25);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 45px rgba(155,92,255,0.18);
+}
+
+.spinner {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 5px solid rgba(155,92,255,0.18);
+    border-top-color: #9b5cff;
+    animation: spin 0.9s linear infinite;
+}
+
+.loader-title {
+    font-weight: 800;
+    font-size: 18px;
+    margin-top: 14px;
+}
+
+.loader-sub {
+    color: #b7b7c9;
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hide-loader {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ===== PAGE CONTENT ===== */
+.page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    padding: 24px;
 }
 
 .card {
@@ -71,19 +133,41 @@ p {
 
 <body>
 
-<div class="card">
-    <h2>Payment Successful ✅</h2>
-    <p>
-        Your payment has been confirmed.
-        Your license key will be sent to your email shortly.
-    </p>
-
-    <a href="YZYToolkit.exe" download class="btn">Download YZYToolkit.exe</a>
-
-    <div class="small">
-        Didn’t receive your key? Check spam or contact support on Discord.
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-card">
+        <div class="spinner"></div>
+        <div class="loader-title">Finalizing…</div>
+        <div class="loader-sub">Confirming your success page</div>
     </div>
 </div>
+
+<!-- PAGE -->
+<div class="page">
+    <div class="card">
+        <h2>Payment Successful ✅</h2>
+        <p>
+            Your payment has been confirmed.
+            Your license key will be sent to your email shortly.
+        </p>
+
+        <a href="YZYToolkit.exe" download class="btn">Download YZYToolkit.exe</a>
+
+        <div class="small">
+            Didn’t receive your key? Check spam or contact support on Discord.
+        </div>
+    </div>
+</div>
+
+<script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    setTimeout(() => {
+      loader.classList.add("hide-loader");
+      document.body.style.overflow = "auto";
+    }, 1100);
+  });
+</script>
 
 </body>
 </html>
