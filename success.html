@@ -1,60 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Payment Successful</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Success - YZY Tweaks</title>
 
-  <style>
-    body{
-      margin:0;
-      font-family:'Segoe UI',sans-serif;
-      background:linear-gradient(135deg,#0f0f1a,#16162a);
-      color:white;
-      padding:40px;
-      text-align:center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-    .card{
-      background:#1e1e30;
-      padding:40px;
-      border-radius:20px;
-      max-width:500px;
-      margin:0 auto;
-      border:1px solid rgba(255,255,255,0.1);
-      box-shadow:0 0 35px rgba(138,43,226,0.25);
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    button{
-      margin-top:20px;
-      padding:16px 28px;
-      border-radius:14px;
-      border:none;
-      background:linear-gradient(90deg,#8A2BE2,#00FFFF);
-      font-weight:bold;
-      cursor:pointer;
-      color:black;
-      width:100%;
-      font-size:16px;
-    }
-  </style>
+.card {
+    width: 520px;
+    background: rgba(30,30,50,0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(155,92,255,0.25);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-weight: 800;
+    font-size: 24px;
+}
+
+p {
+    color: #b7b7c9;
+    line-height: 1.5;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 16px;
+    border: none;
+    background: #9b5cff;
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #7d3cff;
+    transform: translateY(-2px);
+}
+
+.small {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #6b6b84;
+}
+</style>
 </head>
 
 <body>
 
-<h1>Payment Successful 🎉</h1>
-
 <div class="card">
-  <h2>Your Order Was Confirmed</h2>
-  <p>Click below to retrieve your activation key.</p>
+    <h2>Payment Successful ✅</h2>
+    <p>
+        Your payment has been confirmed.
+        Your license key will be sent to your email shortly.
+    </p>
 
-  <button onclick="go()">Continue</button>
+    <a href="YZYToolkit.exe" download class="btn">Download YZYToolkit.exe</a>
+
+    <div class="small">
+        Didn’t receive your key? Check spam or contact support on Discord.
+    </div>
 </div>
-
-<script>
-  function go(){
-    window.location.href = "/download.html";
-  }
-</script>
 
 </body>
 </html>
