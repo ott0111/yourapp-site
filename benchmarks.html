@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<title>Benchmarks — YZY Tweaks</title>
+<style>
+/* Same styling as credibility page */
+:root{
+  --bg:#07040d;
+  --panel:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.10);
+  --text:#eae6ff;
+  --muted:rgba(234,230,255,.72);
+  --accent:#a855f7;
+  --accent2:#7c3aed;
+  --shadow:0 18px 60px rgba(0,0,0,.55);
+  --radius:18px;
+}
+body{
+  margin:0;font-family:system-ui;background:
+  radial-gradient(1000px 700px at 20% -10%, rgba(168,85,247,.20), transparent 60%),
+  radial-gradient(900px 600px at 90% 10%, rgba(124,58,237,.18), transparent 60%),
+  var(--bg);
+  color:var(--text);
+  padding:30px;
+}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+table{width:100%;border-collapse:collapse;margin-top:15px}
+th,td{padding:12px;border-bottom:1px solid var(--stroke)}
+th{background:rgba(255,255,255,.05)}
+.delta{color:#22c55e;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<h1>Before / After Benchmarks</h1>
+
+<div class="card">
+<table>
+<tr>
+<th>Game</th>
+<th>Before</th>
+<th>After</th>
+<th>Increase</th>
+</tr>
+<tr>
+<td>Fortnite</td>
+<td>210 FPS</td>
+<td>238 FPS</td>
+<td class="delta">+28</td>
+</tr>
+<tr>
+<td>Valorant</td>
+<td>390 FPS</td>
+<td>418 FPS</td>
+<td class="delta">+28</td>
+</tr>
+</table>
+</div>
+
+</body>
+</html>
