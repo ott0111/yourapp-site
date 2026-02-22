@@ -1,250 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YZY Tweaks</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin:0; padding:0; }
 
 :root {
-  --accent: #a855f7;
-  --accent2: #7c3aed;
-  --bg: #0b0b14;
+  --accent:#a855f7;
+  --accent2:#7c3aed;
+  --bg:#0b0b14;
 }
 
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1a1a2b, var(--bg));
-  color: white;
-  overflow-x: hidden;
+  font-family:'Inter',sans-serif;
+  background: radial-gradient(circle at top,#1a1a2b,var(--bg));
+  color:white;
+  overflow-x:hidden;
 }
 
-/* Animated background glow */
-body::before {
-  content: "";
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(168,85,247,.25), transparent 60%);
-  top: -200px;
-  left: -200px;
-  filter: blur(120px);
-  z-index: -1;
+/* ===== LOADER ===== */
+.loader {
+  position:fixed;
+  inset:0;
+  background:#0b0b14;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity .6s ease;
 }
 
-/* NAVBAR */
+.loader h1 {
+  font-size:28px;
+  color:var(--accent);
+  animation:pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,100%{opacity:.4}
+  50%{opacity:1}
+}
+
+/* ===== CURSOR GLOW ===== */
+.cursor-glow {
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(168,85,247,.25), transparent 60%);
+  pointer-events:none;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  z-index:-1;
+}
+
+/* ===== NAV ===== */
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  backdrop-filter: blur(20px);
-  background: rgba(15,15,25,.65);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  backdrop-filter:blur(20px);
+  background:rgba(15,15,25,.65);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 22px;
-  color: var(--accent);
+  font-weight:800;
+  font-size:22px;
+  color:var(--accent);
 }
 
 .nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+  display:flex;
+  gap:18px;
+  align-items:center;
 }
 
 .nav-link {
-  color: #cfcfe9;
-  text-decoration: none;
-  font-weight: 600;
-  transition: .2s;
+  color:#cfcfe9;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
 }
 
-.nav-link:hover {
-  color: var(--accent);
+.nav-link:hover { color:var(--accent); }
+
+.discord,.youtube {
+  padding:10px 18px;
+  border-radius:12px;
+  font-weight:700;
+  text-decoration:none;
+  color:white;
+  transition:.3s;
 }
 
-.discord, .youtube {
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  color: white;
-  transition: .3s;
+.discord { background:#5865F2; }
+.youtube { background:#ff0000; }
+
+.discord:hover,.youtube:hover {
+  transform:translateY(-3px);
 }
 
-.discord { background: #5865F2; }
-.youtube { background: #ff0000; }
-
-.discord:hover, .youtube:hover {
-  transform: translateY(-3px);
-  filter: brightness(.9);
-}
-
-/* HERO */
+/* ===== HERO ===== */
 .hero {
-  text-align: center;
-  padding: 110px 20px 60px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: .8s ease;
+  text-align:center;
+  padding:120px 20px 60px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
 }
 
 .hero.show {
-  opacity: 1;
-  transform: translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
 .hero h1 {
-  font-size: 56px;
-  margin: 0;
-  font-weight: 800;
+  font-size:60px;
+  font-weight:800;
 }
 
-.hero span { color: var(--accent); }
+.hero span { color:var(--accent); }
 
 .hero p {
-  margin-top: 20px;
-  color: #b7b7c9;
-  font-size: 18px;
+  margin-top:20px;
+  color:#b7b7c9;
+  font-size:18px;
 }
 
-/* Divider */
+/* ===== DIVIDER ===== */
 .divider {
-  height: 1px;
-  width: 60%;
-  margin: 60px auto;
-  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  height:1px;
+  width:60%;
+  margin:60px auto;
+  background:linear-gradient(to right,transparent,var(--accent),transparent);
 }
 
-/* PRICING */
+/* ===== PRICING ===== */
 .pricing {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  padding: 40px 5% 100px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:50px 5% 120px;
+  flex-wrap:wrap;
 }
 
 .price-card {
-  width: 320px;
-  background: rgba(30,30,50,0.75);
-  border: 1px solid rgba(168,85,247,.25);
-  border-radius: 22px;
-  padding: 30px;
-  backdrop-filter: blur(14px);
-  transition: .5s ease;
-  position: relative;
-  opacity: 0;
-  transform: translateY(60px);
+  width:320px;
+  background:rgba(30,30,50,.8);
+  border:1px solid rgba(168,85,247,.25);
+  border-radius:22px;
+  padding:30px;
+  backdrop-filter:blur(15px);
+  transition:.4s ease;
+  position:relative;
+  opacity:0;
+  transform:translateY(60px);
+  transform-style:preserve-3d;
 }
 
 .price-card.show {
-  opacity: 1;
-  transform: translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
 .price-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(168,85,247,.6);
-  box-shadow: 0 25px 70px rgba(0,0,0,.5);
+  box-shadow:0 25px 70px rgba(0,0,0,.5);
 }
 
 .badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  background: rgba(168,85,247,.2);
-  border: 1px solid rgba(168,85,247,.4);
+  position:absolute;
+  top:16px;
+  right:16px;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  background:rgba(168,85,247,.2);
+  border:1px solid rgba(168,85,247,.4);
 }
 
 .price {
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--accent);
-  margin: 10px 0 18px;
+  font-size:36px;
+  font-weight:800;
+  color:var(--accent);
+  margin:10px 0 18px;
 }
 
 .muted {
-  color: #b7b7c9;
-  font-size: 14px;
-  margin-bottom: 18px;
+  color:#b7b7c9;
+  font-size:14px;
+  margin-bottom:18px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-}
-
+ul { list-style:none; margin:0 0 20px; }
 li {
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
+li:last-child { border-bottom:none; }
 
-li:last-child { border-bottom: none; }
-
-/* Buttons */
+/* ===== BUTTON ===== */
 .btn {
-  width: 100%;
-  border-radius: 14px;
-  padding: 12px 16px;
-  font-weight: 800;
-  cursor: pointer;
-  background: linear-gradient(135deg,var(--accent),var(--accent2));
-  color: white;
-  border: none;
-  transition: .3s ease;
-  box-shadow: 0 8px 30px rgba(124,58,237,.4);
+  width:100%;
+  border-radius:14px;
+  padding:12px;
+  font-weight:800;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;
+  color:white;
+  transition:.3s;
+  box-shadow:0 8px 30px rgba(124,58,237,.4);
 }
 
 .btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 45px rgba(124,58,237,.6);
+  transform:translateY(-4px);
+  box-shadow:0 15px 45px rgba(124,58,237,.6);
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 .footer {
-  text-align: center;
-  padding: 40px;
-  color: #6b6b84;
-  font-size: 14px;
+  text-align:center;
+  padding:40px;
+  color:#6b6b84;
+  font-size:14px;
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
-  .nav {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .nav-buttons {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero h1 {
-    font-size: 38px;
-  }
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .nav{flex-direction:column;gap:16px;}
+  .hero h1{font-size:38px;}
 }
 </style>
 </head>
 
 <body>
+
+<div class="loader"><h1>Loading YZY Tweaks...</h1></div>
+<div class="cursor-glow"></div>
 
 <div class="nav">
   <div class="logo">YZY Tweaks</div>
@@ -252,20 +254,19 @@ li:last-child { border-bottom: none; }
     <a class="nav-link" href="credibility.html">Credibility</a>
     <a class="nav-link" href="benchmarks.html">Benchmarks</a>
     <a class="nav-link" href="changes.html">Changes</a>
-    <a class="discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
-    <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
+    <a class="discord" href="#" target="_blank">Discord</a>
+    <a class="youtube" href="#" target="_blank">YouTube</a>
   </div>
 </div>
 
 <div class="hero">
   <h1>Unlock Maximum <span>Performance</span></h1>
-  <p>Purchase a plan and receive your license key automatically by email.</p>
+  <p>Elite system optimization software built for serious performance.</p>
 </div>
 
 <div class="divider"></div>
 
 <div class="pricing">
-
   <div class="price-card">
     <div class="badge">FREE</div>
     <h3>Trial</h3>
@@ -273,21 +274,21 @@ li:last-child { border-bottom: none; }
     <div class="muted">Start instantly</div>
     <ul>
       <li>Core Tweaks</li>
-      <li>Windows / CPU / GPU Panels</li>
+      <li>Windows Panels</li>
       <li>Hardware Dashboard</li>
     </ul>
-    <a class="btn" href="YZYToolkit.exe" download>Download Trial</a>
+    <button class="btn">Download</button>
   </div>
 
   <div class="price-card">
     <div class="badge">POPULAR</div>
-    <h3>Pro Version</h3>
-    <div class="price">$7.00</div>
+    <h3>Pro</h3>
+    <div class="price">$7</div>
     <div class="muted">+20 advanced tweaks</div>
     <ul>
-      <li>+20 Advanced Tweaks</li>
+      <li>Advanced Tweaks</li>
+      <li>Profiles</li>
       <li>Priority Support</li>
-      <li>Performance Profiles</li>
     </ul>
     <button class="btn">Buy Pro</button>
   </div>
@@ -295,34 +296,58 @@ li:last-child { border-bottom: none; }
   <div class="price-card">
     <div class="badge">BEST</div>
     <h3>Lifetime</h3>
-    <div class="price">$15.00</div>
+    <div class="price">$15</div>
     <div class="muted">Everything unlocked</div>
     <ul>
-      <li>+50 Premium Tweaks</li>
-      <li>All Future Updates</li>
-      <li>Max Optimization Mode</li>
+      <li>50+ Tweaks</li>
+      <li>Future Updates</li>
+      <li>Max Mode</li>
     </ul>
     <button class="btn">Buy Lifetime</button>
   </div>
-
 </div>
 
-<div class="footer">
-© 2026 YZY Tweaks • All rights reserved.
-</div>
+<div class="footer">© 2026 YZY Tweaks</div>
 
 <script>
-const observer = new IntersectionObserver(entries=>{
+/* Loader */
+window.addEventListener("load",()=>{
+  document.querySelector(".loader").style.opacity="0";
+  setTimeout(()=>document.querySelector(".loader").remove(),600);
+});
+
+/* Cursor Glow */
+const glow=document.querySelector(".cursor-glow");
+document.addEventListener("mousemove",(e)=>{
+  glow.style.left=e.clientX+"px";
+  glow.style.top=e.clientY+"px";
+});
+
+/* Scroll Reveal */
+const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
+    if(entry.isIntersecting) entry.target.classList.add("show");
   });
-},{threshold:0.15});
+},{threshold:0.2});
 
 observer.observe(document.querySelector(".hero"));
+document.querySelectorAll(".price-card").forEach(card=>observer.observe(card));
+
+/* 3D Tilt Effect */
 document.querySelectorAll(".price-card").forEach(card=>{
-  observer.observe(card);
+  card.addEventListener("mousemove",(e)=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const centerX=rect.width/2;
+    const centerY=rect.height/2;
+    const rotateX=(y-centerY)/15;
+    const rotateY=(centerX-x)/15;
+    card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  card.addEventListener("mouseleave",()=>{
+    card.style.transform="rotateX(0) rotateY(0)";
+  });
 });
 </script>
 
