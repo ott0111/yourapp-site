@@ -15,66 +15,188 @@ body {
   font-family: 'Inter', sans-serif;
   background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
   color: white;
-  overflow-x: hidden;
 }
 
-/* NAVIGATION */
+/* NAVBAR */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 40px;
+  padding: 20px 60px;
 }
 
 .logo {
   font-weight: 800;
   font-size: 22px;
   color: #9b5cff;
-  letter-spacing: 0.5px;
 }
 
 .nav-buttons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
 }
 
 .nav-link {
   color: #b7b7c9;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.25s;
+  transition: 0.2s;
 }
 
 .nav-link:hover {
   color: #9b5cff;
 }
 
-.nav-buttons a {
+.discord, .youtube {
   padding: 10px 18px;
   border-radius: 12px;
-  text-decoration: none;
   font-weight: 700;
+  text-decoration: none;
   color: white;
-  transition: 0.25s;
 }
 
 .discord { background: #5865F2; }
-.discord:hover { filter: brightness(0.9); transform: translateY(-1px); }
+.youtube { background: #ff0000; }
 
-.youtube { background: #FF0000; }
-.youtube:hover { filter: brightness(0.9); transform: translateY(-1px); }
+.discord:hover, .youtube:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.9);
+}
 
-/* MOBILE FIX */
-@media (max-width: 768px) {
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 90px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.hero span { color: #9b5cff; }
+
+.hero p {
+  margin-top: 16px;
+  color: #b7b7c9;
+  font-size: 18px;
+}
+
+/* PRICING */
+.pricing {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 50px 5% 80px;
+  flex-wrap: wrap;
+}
+
+.price-card {
+  width: 320px;
+  background: rgba(30,30,50,0.7);
+  border: 1px solid rgba(155,92,255,0.25);
+  border-radius: 22px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+  position: relative;
+}
+
+.price-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(155,92,255,0.55);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  background: rgba(155,92,255,0.2);
+  border: 1px solid rgba(155,92,255,0.35);
+}
+
+.price-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.price {
+  font-size: 34px;
+  font-weight: 800;
+  color: #9b5cff;
+  margin: 10px 0 18px;
+}
+
+.muted {
+  color: #b7b7c9;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+li:last-child { border-bottom: none; }
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  background: #9b5cff;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #7d3cff;
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 40px;
+  color: #6b6b84;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #9b5cff;
+  text-decoration: none;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
   .nav {
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
   }
 
   .nav-buttons {
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 36px;
   }
 }
 </style>
@@ -82,38 +204,20 @@ body {
 
 <body>
 
-<!-- CONFIG -->
-<script>
-  // Your deployed Apps Script web app endpoint:
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec";
-  // Your site:
-  const SITE = "https://yzytweaks.store";
-</script>
-
 <div class="nav">
   <div class="logo">YZY Tweaks</div>
-
   <div class="nav-buttons">
     <a class="nav-link" href="credibility.html">Credibility</a>
     <a class="nav-link" href="benchmarks.html">Benchmarks</a>
     <a class="nav-link" href="changes.html">Changes</a>
-
     <a class="discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
     <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
   </div>
 </div>
 
-<div class="nav">
-  <div class="logo">YZY Tweaks</div>
-
-  <div class="nav-buttons">
-    <a class="nav-link" href="credibility.html">Credibility</a>
-    <a class="nav-link" href="benchmarks.html">Benchmarks</a>
-    <a class="nav-link" href="changes.html">Changes</a>
-
-    <a class="discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
-    <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
-  </div>
+<div class="hero">
+  <h1>Unlock Maximum <span>Performance</span></h1>
+  <p>Purchase a plan, then your license key will be emailed automatically. After that, activate inside the app.</p>
 </div>
 
 <div class="pricing">
@@ -144,20 +248,13 @@ body {
       <li>Performance Profiles</li>
     </ul>
 
-    <!-- PayPal Button (WITH IPN notify_url) -->
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="yeezy5731@gmail.com">
       <input type="hidden" name="item_name" value="YZY Toolkit Pro">
       <input type="hidden" name="amount" value="7.00">
       <input type="hidden" name="currency_code" value="USD">
-
-      <!-- Return after checkout -->
       <input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=pro">
-
-      <!-- IMPORTANT: IPN URL (calls your Google Apps Script) -->
-      <input type="hidden" name="notify_url" value="https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec?mode=ipn">
-
       <button type="submit" class="btn">Buy Pro</button>
     </form>
   </div>
@@ -167,27 +264,20 @@ body {
     <div class="badge">BEST</div>
     <h3>Lifetime Version</h3>
     <div class="price">$15.00</div>
-    <div class="muted">everything unlocked</div>
+    <div class="muted">Everything unlocked</div>
     <ul>
       <li>+50 Premium Tweaks</li>
       <li>All Future Updates</li>
       <li>Maximum Optimization Mode</li>
     </ul>
 
-    <!-- PayPal Button (WITH IPN notify_url) -->
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="yeezy5731@gmail.com">
       <input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
       <input type="hidden" name="amount" value="15.00">
       <input type="hidden" name="currency_code" value="USD">
-
-      <!-- Return after checkout -->
       <input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=lifetime">
-
-      <!-- IMPORTANT: IPN URL (calls your Google Apps Script) -->
-      <input type="hidden" name="notify_url" value="https://script.google.com/macros/s/AKfycbzBUB4bQGh0mOmaNpcMYT5ZyyPTJs3VdYBFXj1vmiQM5iWvsp5xi2khgZOE2BzlW965CQ/exec?mode=ipn">
-
       <button type="submit" class="btn">Buy Lifetime</button>
     </form>
   </div>
@@ -196,8 +286,7 @@ body {
 
 <div class="footer">
   © 2026 YZY Tweaks • Keys are delivered by email after payment confirmation.
-  <br><br>
-  <a href="credibility.html">Credibility</a> • 
-  <a href="benchmarks.html">Benchmarks</a> • 
-  <a href="changes.html">What We Change</a>
 </div>
+
+</body>
+</html>
