@@ -1,68 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Benchmarks — YZY Tweaks</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-/* Same styling as credibility page */
-:root{
-  --bg:#07040d;
-  --panel:rgba(255,255,255,.06);
-  --stroke:rgba(255,255,255,.10);
-  --text:#eae6ff;
-  --muted:rgba(234,230,255,.72);
-  --accent:#a855f7;
-  --accent2:#7c3aed;
-  --shadow:0 18px 60px rgba(0,0,0,.55);
-  --radius:18px;
-}
-body{
-  margin:0;font-family:system-ui;background:
-  radial-gradient(1000px 700px at 20% -10%, rgba(168,85,247,.20), transparent 60%),
-  radial-gradient(900px 600px at 90% 10%, rgba(124,58,237,.18), transparent 60%),
-  var(--bg);
-  color:var(--text);
-  padding:30px;
-}
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-table{width:100%;border-collapse:collapse;margin-top:15px}
-th,td{padding:12px;border-bottom:1px solid var(--stroke)}
-th{background:rgba(255,255,255,.05)}
-.delta{color:#22c55e;font-weight:bold}
+body{margin:0;font-family:'Inter',sans-serif;background:radial-gradient(circle at top,#1a1a2b,#0f0f17);color:white;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;}
+.logo{font-weight:800;font-size:22px;color:#9b5cff;}
+.container{padding:60px 8%;}
+.card{background:rgba(30,30,50,0.68);border:1px solid rgba(155,92,255,0.22);border-radius:22px;padding:30px;backdrop-filter:blur(14px);}
+table{width:100%;border-collapse:collapse;margin-top:20px;}
+th,td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.08);}
+th{color:#9b5cff;text-align:left;}
+.delta{color:#22c55e;font-weight:800;}
+.footer{text-align:center;padding:40px;color:#6b6b84;}
 </style>
 </head>
 
 <body>
 
-<h1>Before / After Benchmarks</h1>
+<div class="nav">
+  <div class="logo">YZY Tweaks</div>
+  <a href="index.html">Home</a>
+</div>
+
+<div class="container">
+<h1>Before & After FPS Benchmarks</h1>
 
 <div class="card">
 <table>
-<tr>
-<th>Game</th>
-<th>Before</th>
-<th>After</th>
-<th>Increase</th>
-</tr>
-<tr>
-<td>Fortnite</td>
-<td>210 FPS</td>
-<td>238 FPS</td>
-<td class="delta">+28</td>
-</tr>
-<tr>
-<td>Valorant</td>
-<td>390 FPS</td>
-<td>418 FPS</td>
-<td class="delta">+28</td>
-</tr>
+<tr><th>Game</th><th>Before</th><th>After</th><th>Increase</th></tr>
+<tr><td>Fortnite</td><td>210 FPS</td><td>238 FPS</td><td class="delta">+28 FPS</td></tr>
+<tr><td>Valorant</td><td>390 FPS</td><td>418 FPS</td><td class="delta">+28 FPS</td></tr>
 </table>
 </div>
+</div>
+
+<div class="footer">© 2026 YZY Tweaks</div>
 
 </body>
-</html>
+</html>p
