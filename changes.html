@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<title>System Changes — YZY Tweaks</title>
+<style>
+/* reuse same style block as above */
+:root{
+  --bg:#07040d;
+  --panel:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.10);
+  --text:#eae6ff;
+  --muted:rgba(234,230,255,.72);
+  --accent:#a855f7;
+  --accent2:#7c3aed;
+  --shadow:0 18px 60px rgba(0,0,0,.55);
+  --radius:18px;
+}
+body{
+  margin:0;font-family:system-ui;background:
+  radial-gradient(1000px 700px at 20% -10%, rgba(168,85,247,.20), transparent 60%),
+  radial-gradient(900px 600px at 90% 10%, rgba(124,58,237,.18), transparent 60%),
+  var(--bg);
+  color:var(--text);
+  padding:30px;
+}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+</style>
+</head>
+
+<body>
+
+<h1>What The Software Changes</h1>
+
+<div class="card">
+<h2>System Restore Point</h2>
+<p style="color:var(--muted)">Automatically created before tweaks.</p>
+</div>
+
+<div class="card">
+<h2>Performance Profiles</h2>
+<p style="color:var(--muted)">Optimizes Windows power and background behavior.</p>
+</div>
+
+<div class="card">
+<h2>Network Optimization</h2>
+<p style="color:var(--muted)">Optional gaming-focused latency tuning.</p>
+</div>
+
+</body>
+</html>
