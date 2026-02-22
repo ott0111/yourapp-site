@@ -1,93 +1,64 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
 <title>Credibility — YZY Tweaks</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#07040d;
-  --panel:rgba(255,255,255,.06);
-  --stroke:rgba(255,255,255,.10);
-  --text:#eae6ff;
-  --muted:rgba(234,230,255,.72);
-  --accent:#a855f7;
-  --accent2:#7c3aed;
-  --shadow:0 18px 60px rgba(0,0,0,.55);
-  --radius:18px;
-}
-
-*{box-sizing:border-box}
-body{
+body {
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;
-  background:
-    radial-gradient(1000px 700px at 20% -10%, rgba(168,85,247,.20), transparent 60%),
-    radial-gradient(900px 600px at 90% 10%, rgba(124,58,237,.18), transparent 60%),
-    var(--bg);
-  color:var(--text);
-  min-height:100vh;
-}
-
-.wrap{max-width:1100px;margin:auto;padding:30px}
-h1{font-size:36px;margin-bottom:10px}
-p{color:var(--muted);line-height:1.7}
-
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
-  padding:22px;
-  margin-top:18px;
-  box-shadow:var(--shadow);
-}
-
-.btn{
-  display:inline-block;
-  margin-top:14px;
-  padding:12px 16px;
-  border-radius:14px;
-  font-weight:700;
-  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  font-family:'Inter',sans-serif;
+  background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
   color:white;
-  text-decoration:none;
-  box-shadow:0 12px 40px rgba(124,58,237,.35);
-  transition:.2s;
 }
-.btn:hover{transform:translateY(-2px)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;}
+.logo{font-weight:800;font-size:22px;color:#9b5cff;}
+.nav-buttons a{margin-left:12px;color:white;text-decoration:none;font-weight:600;}
+.container{padding:60px 8%;}
+.card{
+  background: rgba(30,30,50,0.68);
+  border:1px solid rgba(155,92,255,0.22);
+  border-radius:22px;
+  padding:30px;
+  margin-bottom:30px;
+  backdrop-filter:blur(14px);
+}
+.card h2{color:#9b5cff;margin-top:0;}
+.footer{text-align:center;padding:40px;color:#6b6b84;}
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<h1>Credibility & Transparency</h1>
-<p>Performance software should prove itself. Here’s how YZY Tweaks builds trust.</p>
-
-<div class="card">
-<h2>Measured FPS Improvements</h2>
-<p>We publish real before/after FPS benchmarks instead of vague marketing claims.</p>
-<a href="benchmarks.html" class="btn">View Benchmarks</a>
+<div class="nav">
+  <div class="logo">YZY Tweaks</div>
+  <div class="nav-buttons">
+    <a href="index.html">Home</a>
+  </div>
 </div>
 
-<div class="card">
-<h2>Transparent System Changes</h2>
-<p>We clearly explain what the software modifies so users know what’s happening under the hood.</p>
-<a href="changes.html" class="btn">See What Changes</a>
+<div class="container">
+  <h1>Credibility & Transparency</h1>
+
+  <div class="card">
+    <h2>Measured Performance Gains</h2>
+    <p>We provide real before and after FPS benchmark comparisons so users can verify performance improvements.</p>
+  </div>
+
+  <div class="card">
+    <h2>Restore Point Protection</h2>
+    <p>A Windows System Restore Point is created before any changes are applied.</p>
+  </div>
+
+  <div class="card">
+    <h2>Transparent Backend Changes</h2>
+    <p>We clearly outline what the software modifies to improve system performance.</p>
+  </div>
 </div>
 
-<div class="card">
-<h2>Restore Point Before Changes</h2>
-<p>A Windows System Restore Point is created before applying tweaks.</p>
+<div class="footer">
+  © 2026 YZY Tweaks
 </div>
 
-<div class="card">
-<h2>Real User Testimonials</h2>
-<p>Authentic Discord feedback from real users.</p>
-<a href="testimonials.html" class="btn">Read Testimonials</a>
-</div>
-
-</div>
 </body>
 </html>
