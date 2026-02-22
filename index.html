@@ -8,163 +8,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
-    color: white;
-    overflow-x: hidden;
-  }
-  <div class="nav">
-  <div class="logo">YZY Tweaks</div>
-  <div class="nav-buttons">
-    <a class="discord" href="https://discord.gg/m44Hj7EDkj" target="_blank">Discord</a>
-    <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
-    <a class="btn-secondary" href="credibility.html">Credibility</a>
-    <a class="btn-secondary" href="benchmarks.html">Benchmarks</a>
-    <a class="btn-secondary" href="faq.html">FAQ</a>
-  </div>
-</div>
-  .logo {
-    font-weight: 800;
-    font-size: 22px;
-    color: #9b5cff;
-    letter-spacing: 0.5px;
-  }
-  .nav-buttons a {
-    margin-left: 12px;
-    padding: 10px 18px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    color: white;
-    display: inline-block;
-    transition: 0.25s;
-  }
-  .discord { background: #5865F2; }
-  .discord:hover { filter: brightness(0.9); transform: translateY(-1px); }
-  .youtube { background: #FF0000; }
-  .youtube:hover { filter: brightness(0.9); transform: translateY(-1px); }
+* { box-sizing: border-box; }
 
-  .hero {
-    text-align: center;
-    padding: 95px 20px 30px;
-  }
-  .hero h1 {
-    font-size: 52px;
-    font-weight: 800;
-    margin: 0;
-  }
-  .hero h1 span { color: #9b5cff; }
-  .hero p {
-    margin: 14px auto 0;
-    max-width: 720px;
-    color: #b7b7c9;
-    font-size: 18px;
-    line-height: 1.45;
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #1a1a2b, #0f0f17);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 22px;
+  color: #9b5cff;
+  letter-spacing: 0.5px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  color: #b7b7c9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.nav-link:hover {
+  color: #9b5cff;
+}
+
+.nav-buttons a {
+  padding: 10px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
+  transition: 0.25s;
+}
+
+.discord { background: #5865F2; }
+.discord:hover { filter: brightness(0.9); transform: translateY(-1px); }
+
+.youtube { background: #FF0000; }
+.youtube:hover { filter: brightness(0.9); transform: translateY(-1px); }
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .pricing {
-    display: flex;
-    justify-content: center;
-    gap: 26px;
-    padding: 48px 8% 70px;
+  .nav-buttons {
     flex-wrap: wrap;
+    justify-content: center;
   }
-
-  .price-card {
-    width: 320px;
-    background: rgba(30,30,50,0.68);
-    border: 1px solid rgba(155,92,255,0.22);
-    border-radius: 22px;
-    padding: 30px;
-    backdrop-filter: blur(14px);
-    transition: 0.25s;
-    position: relative;
-  }
-  .price-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(155,92,255,0.55);
-    box-shadow: 0 0 0 1px rgba(155,92,255,0.25), 0 18px 60px rgba(0,0,0,0.35);
-  }
-
-  .badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-    background: rgba(155,92,255,0.18);
-    border: 1px solid rgba(155,92,255,0.28);
-    color: #d9c8ff;
-  }
-
-  .price-card h3 {
-    margin: 0 0 10px;
-    font-size: 20px;
-    font-weight: 800;
-  }
-  .price {
-    font-size: 34px;
-    font-weight: 800;
-    color: #9b5cff;
-    margin: 10px 0 16px;
-  }
-  .muted {
-    color: #b7b7c9;
-    font-size: 13px;
-    margin-top: -10px;
-    margin-bottom: 18px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 18px;
-    color: #c7c7d8;
-  }
-  li { padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  li:last-child { border-bottom: none; }
-
-  .btn {
-    width: 100%;
-    border: none;
-    border-radius: 14px;
-    padding: 12px 16px;
-    font-weight: 800;
-    cursor: pointer;
-    background: #9b5cff;
-    color: white;
-    transition: 0.25s;
-  }
-  .btn:hover { background: #7d3cff; transform: translateY(-1px); }
-
-  .btn-secondary {
-    width: 100%;
-    border: 1px solid rgba(155,92,255,0.35);
-    border-radius: 14px;
-    padding: 12px 16px;
-    font-weight: 800;
-    cursor: pointer;
-    background: rgba(155,92,255,0.12);
-    color: white;
-    transition: 0.25s;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-  }
-  .btn-secondary:hover { background: rgba(155,92,255,0.18); transform: translateY(-1px); }
-
-  .footer {
-    text-align: center;
-    padding: 40px;
-    color: #6b6b84;
-    font-size: 13px;
-  }
+}
 </style>
 </head>
 
@@ -190,20 +102,18 @@
     <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
   </div>
 </div>
- .nav-link {
-  margin-left: 18px;
-  color: #b7b7c9;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.25s;
-}
 
-.nav-link:hover {
-  color: #9b5cff;
-}
-<div class="hero">
-  <h1>Unlock Maximum <span>Performance</span></h1>
-  <p>Purchase a plan, then your license key will be emailed automatically. After that, activate inside the app.</p>
+<div class="nav">
+  <div class="logo">YZY Tweaks</div>
+
+  <div class="nav-buttons">
+    <a class="nav-link" href="credibility.html">Credibility</a>
+    <a class="nav-link" href="benchmarks.html">Benchmarks</a>
+    <a class="nav-link" href="changes.html">Changes</a>
+
+    <a class="discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
+    <a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
+  </div>
 </div>
 
 <div class="pricing">
