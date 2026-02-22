@@ -8,237 +8,126 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-:root {
-  --accent:#a855f7;
-  --accent2:#7c3aed;
-  --bg:#0b0b14;
+:root{
+--accent:#a855f7;
+--accent2:#7c3aed;
+--bg:#0b0b14;
 }
 
-body {
-  font-family:'Inter',sans-serif;
-  background: radial-gradient(circle at top,#1a1a2b,var(--bg));
-  color:white;
-  overflow-x:hidden;
+body{
+font-family:'Inter',sans-serif;
+background:radial-gradient(circle at top,#1a1a2b,var(--bg));
+color:white;
+overflow-x:hidden;
 }
 
-/* ===== LOADER ===== */
-.loader {
-  position:fixed;
-  inset:0;
-  background:#0b0b14;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  transition:opacity .6s ease;
+/* LOADER */
+.loader{
+position:fixed;inset:0;background:#0b0b14;
+display:flex;justify-content:center;align-items:center;
+z-index:9999;transition:opacity .6s ease;
+}
+.loader h1{
+color:var(--accent);
+animation:pulse 1.5s infinite;
+}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* CURSOR GLOW */
+.cursor-glow{
+position:fixed;width:300px;height:300px;
+background:radial-gradient(circle,rgba(168,85,247,.25),transparent 60%);
+pointer-events:none;border-radius:50%;
+transform:translate(-50%,-50%);
+z-index:-1;
 }
 
-.loader h1 {
-  font-size:28px;
-  color:var(--accent);
-  animation:pulse 1.5s infinite ease-in-out;
+/* NAV */
+.nav{
+position:sticky;top:0;z-index:1000;
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 60px;
+backdrop-filter:blur(20px);
+background:rgba(15,15,25,.65);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo{font-weight:800;font-size:22px;color:var(--accent)}
+.nav-buttons{display:flex;gap:18px;align-items:center}
+.nav-link{color:#cfcfe9;text-decoration:none;font-weight:600}
+.nav-link:hover{color:var(--accent)}
+
+.discord,.youtube{
+padding:10px 18px;border-radius:12px;font-weight:700;
+text-decoration:none;color:white;transition:.3s;
+}
+.discord{background:#5865F2}
+.youtube{background:#ff0000}
+.discord:hover,.youtube:hover{transform:translateY(-3px)}
+
+/* HERO */
+.hero{text-align:center;padding:120px 20px 60px;
+opacity:0;transform:translateY(40px);transition:1s}
+.hero.show{opacity:1;transform:translateY(0)}
+.hero h1{font-size:60px;font-weight:800}
+.hero span{color:var(--accent)}
+.hero p{margin-top:20px;color:#b7b7c9;font-size:18px}
+
+/* DIVIDER */
+.divider{height:1px;width:60%;margin:60px auto;
+background:linear-gradient(to right,transparent,var(--accent),transparent)}
+
+/* PRICING */
+.pricing{display:flex;justify-content:center;gap:30px;
+padding:50px 5% 120px;flex-wrap:wrap}
+
+.price-card{
+width:320px;background:rgba(30,30,50,.8);
+border:1px solid rgba(168,85,247,.25);
+border-radius:22px;padding:30px;
+backdrop-filter:blur(15px);
+transition:.4s ease;position:relative;
+opacity:0;transform:translateY(60px);
+transform-style:preserve-3d;
+}
+.price-card.show{opacity:1;transform:translateY(0)}
+.price-card:hover{box-shadow:0 25px 70px rgba(0,0,0,.5)}
+
+.badge{
+position:absolute;top:16px;right:16px;
+padding:6px 12px;border-radius:999px;
+font-size:12px;font-weight:800;
+background:rgba(168,85,247,.2);
+border:1px solid rgba(168,85,247,.4)
 }
 
-@keyframes pulse {
-  0%,100%{opacity:.4}
-  50%{opacity:1}
+.price{font-size:36px;font-weight:800;color:var(--accent);
+margin:10px 0 18px}
+.muted{color:#b7b7c9;font-size:14px;margin-bottom:18px}
+
+ul{list-style:none;margin:0 0 20px}
+li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+li:last-child{border-bottom:none}
+
+/* BUTTON */
+.btn{
+width:100%;border-radius:14px;padding:12px;
+font-weight:800;cursor:pointer;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+border:none;color:white;transition:.3s;
+box-shadow:0 8px 30px rgba(124,58,237,.4)
+}
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 45px rgba(124,58,237,.6)
 }
 
-/* ===== CURSOR GLOW ===== */
-.cursor-glow {
-  position:fixed;
-  width:300px;
-  height:300px;
-  background:radial-gradient(circle, rgba(168,85,247,.25), transparent 60%);
-  pointer-events:none;
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  z-index:-1;
-}
+.footer{text-align:center;padding:40px;color:#6b6b84;font-size:14px}
 
-/* ===== NAV ===== */
-.nav {
-  position:sticky;
-  top:0;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 60px;
-  backdrop-filter:blur(20px);
-  background:rgba(15,15,25,.65);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.logo {
-  font-weight:800;
-  font-size:22px;
-  color:var(--accent);
-}
-
-.nav-buttons {
-  display:flex;
-  gap:18px;
-  align-items:center;
-}
-
-.nav-link {
-  color:#cfcfe9;
-  text-decoration:none;
-  font-weight:600;
-  transition:.2s;
-}
-
-.nav-link:hover { color:var(--accent); }
-
-.discord,.youtube {
-  padding:10px 18px;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-  color:white;
-  transition:.3s;
-}
-
-.discord { background:#5865F2; }
-.youtube { background:#ff0000; }
-
-.discord:hover,.youtube:hover {
-  transform:translateY(-3px);
-}
-
-/* ===== HERO ===== */
-.hero {
-  text-align:center;
-  padding:120px 20px 60px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-
-.hero.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.hero h1 {
-  font-size:60px;
-  font-weight:800;
-}
-
-.hero span { color:var(--accent); }
-
-.hero p {
-  margin-top:20px;
-  color:#b7b7c9;
-  font-size:18px;
-}
-
-/* ===== DIVIDER ===== */
-.divider {
-  height:1px;
-  width:60%;
-  margin:60px auto;
-  background:linear-gradient(to right,transparent,var(--accent),transparent);
-}
-
-/* ===== PRICING ===== */
-.pricing {
-  display:flex;
-  justify-content:center;
-  gap:30px;
-  padding:50px 5% 120px;
-  flex-wrap:wrap;
-}
-
-.price-card {
-  width:320px;
-  background:rgba(30,30,50,.8);
-  border:1px solid rgba(168,85,247,.25);
-  border-radius:22px;
-  padding:30px;
-  backdrop-filter:blur(15px);
-  transition:.4s ease;
-  position:relative;
-  opacity:0;
-  transform:translateY(60px);
-  transform-style:preserve-3d;
-}
-
-.price-card.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.price-card:hover {
-  box-shadow:0 25px 70px rgba(0,0,0,.5);
-}
-
-.badge {
-  position:absolute;
-  top:16px;
-  right:16px;
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:800;
-  background:rgba(168,85,247,.2);
-  border:1px solid rgba(168,85,247,.4);
-}
-
-.price {
-  font-size:36px;
-  font-weight:800;
-  color:var(--accent);
-  margin:10px 0 18px;
-}
-
-.muted {
-  color:#b7b7c9;
-  font-size:14px;
-  margin-bottom:18px;
-}
-
-ul { list-style:none; margin:0 0 20px; }
-li {
-  padding:8px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-li:last-child { border-bottom:none; }
-
-/* ===== BUTTON ===== */
-.btn {
-  width:100%;
-  border-radius:14px;
-  padding:12px;
-  font-weight:800;
-  cursor:pointer;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border:none;
-  color:white;
-  transition:.3s;
-  box-shadow:0 8px 30px rgba(124,58,237,.4);
-}
-
-.btn:hover {
-  transform:translateY(-4px);
-  box-shadow:0 15px 45px rgba(124,58,237,.6);
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  text-align:center;
-  padding:40px;
-  color:#6b6b84;
-  font-size:14px;
-}
-
-/* ===== MOBILE ===== */
 @media(max-width:900px){
-  .nav{flex-direction:column;gap:16px;}
-  .hero h1{font-size:38px;}
+.nav{flex-direction:column;gap:16px}
+.hero h1{font-size:38px}
 }
 </style>
 </head>
@@ -249,105 +138,121 @@ li:last-child { border-bottom:none; }
 <div class="cursor-glow"></div>
 
 <div class="nav">
-  <div class="logo">YZY Tweaks</div>
-  <div class="nav-buttons">
-    <a class="nav-link" href="credibility.html">Credibility</a>
-    <a class="nav-link" href="benchmarks.html">Benchmarks</a>
-    <a class="nav-link" href="changes.html">Changes</a>
-    <a class="discord" href="#" target="_blank">Discord</a>
-    <a class="youtube" href="#" target="_blank">YouTube</a>
-  </div>
+<div class="logo">YZY Tweaks</div>
+<div class="nav-buttons">
+<a class="nav-link" href="credibility.html">Credibility</a>
+<a class="nav-link" href="benchmarks.html">Benchmarks</a>
+<a class="nav-link" href="changes.html">Changes</a>
+<a class="discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
+<a class="youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
+</div>
 </div>
 
 <div class="hero">
-  <h1>Unlock Maximum <span>Performance</span></h1>
-  <p>Elite system optimization software built for serious performance.</p>
+<h1>Unlock Maximum <span>Performance</span></h1>
+<p>Elite system optimization software built for serious performance.</p>
 </div>
 
 <div class="divider"></div>
 
 <div class="pricing">
-  <div class="price-card">
-    <div class="badge">FREE</div>
-    <h3>Trial</h3>
-    <div class="price">$0</div>
-    <div class="muted">Start instantly</div>
-    <ul>
-      <li>Core Tweaks</li>
-      <li>Windows Panels</li>
-      <li>Hardware Dashboard</li>
-    </ul>
-    <button class="btn">Download</button>
-  </div>
 
-  <div class="price-card">
-    <div class="badge">POPULAR</div>
-    <h3>Pro</h3>
-    <div class="price">$7</div>
-    <div class="muted">+20 advanced tweaks</div>
-    <ul>
-      <li>Advanced Tweaks</li>
-      <li>Profiles</li>
-      <li>Priority Support</li>
-    </ul>
-    <button class="btn">Buy Pro</button>
-  </div>
+<div class="price-card">
+<div class="badge">FREE</div>
+<h3>Trial</h3>
+<div class="price">$0</div>
+<div class="muted">Start instantly</div>
+<ul>
+<li>Core Tweaks</li>
+<li>Windows Panels</li>
+<li>Hardware Dashboard</li>
+</ul>
+<a class="btn" href="YZYToolkit.exe" download>Download Trial</a>
+</div>
 
-  <div class="price-card">
-    <div class="badge">BEST</div>
-    <h3>Lifetime</h3>
-    <div class="price">$15</div>
-    <div class="muted">Everything unlocked</div>
-    <ul>
-      <li>50+ Tweaks</li>
-      <li>Future Updates</li>
-      <li>Max Mode</li>
-    </ul>
-    <button class="btn">Buy Lifetime</button>
-  </div>
+<div class="price-card">
+<div class="badge">POPULAR</div>
+<h3>Pro</h3>
+<div class="price">$7</div>
+<div class="muted">+20 advanced tweaks</div>
+<ul>
+<li>Advanced Tweaks</li>
+<li>Profiles</li>
+<li>Priority Support</li>
+</ul>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="yeezy5731@gmail.com">
+<input type="hidden" name="item_name" value="YZY Toolkit Pro">
+<input type="hidden" name="amount" value="7.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=pro">
+<button type="submit" class="btn">Buy Pro</button>
+</form>
+</div>
+
+<div class="price-card">
+<div class="badge">BEST</div>
+<h3>Lifetime</h3>
+<div class="price">$15</div>
+<div class="muted">Everything unlocked</div>
+<ul>
+<li>50+ Tweaks</li>
+<li>Future Updates</li>
+<li>Max Mode</li>
+</ul>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="yeezy5731@gmail.com">
+<input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
+<input type="hidden" name="amount" value="15.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=lifetime">
+<button type="submit" class="btn">Buy Lifetime</button>
+</form>
+</div>
+
 </div>
 
 <div class="footer">© 2026 YZY Tweaks</div>
 
 <script>
-/* Loader */
 window.addEventListener("load",()=>{
-  document.querySelector(".loader").style.opacity="0";
-  setTimeout(()=>document.querySelector(".loader").remove(),600);
+document.querySelector(".loader").style.opacity="0";
+setTimeout(()=>document.querySelector(".loader").remove(),600);
 });
 
-/* Cursor Glow */
 const glow=document.querySelector(".cursor-glow");
 document.addEventListener("mousemove",(e)=>{
-  glow.style.left=e.clientX+"px";
-  glow.style.top=e.clientY+"px";
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
 });
 
-/* Scroll Reveal */
 const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add("show");
-  });
+entries.forEach(entry=>{
+if(entry.isIntersecting)entry.target.classList.add("show");
+});
 },{threshold:0.2});
 
 observer.observe(document.querySelector(".hero"));
 document.querySelectorAll(".price-card").forEach(card=>observer.observe(card));
 
-/* 3D Tilt Effect */
 document.querySelectorAll(".price-card").forEach(card=>{
-  card.addEventListener("mousemove",(e)=>{
-    const rect=card.getBoundingClientRect();
-    const x=e.clientX-rect.left;
-    const y=e.clientY-rect.top;
-    const centerX=rect.width/2;
-    const centerY=rect.height/2;
-    const rotateX=(y-centerY)/15;
-    const rotateY=(centerX-x)/15;
-    card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-  card.addEventListener("mouseleave",()=>{
-    card.style.transform="rotateX(0) rotateY(0)";
-  });
+card.addEventListener("mousemove",(e)=>{
+const rect=card.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+const centerX=rect.width/2;
+const centerY=rect.height/2;
+const rotateX=(y-centerY)/15;
+const rotateY=(centerX-x)/15;
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateX(0) rotateY(0)";
+});
 });
 </script>
 
