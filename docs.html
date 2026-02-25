@@ -1,172 +1,330 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Documentation — YZY Tweaks</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+
 :root{
-  --bg:#07040d;
-  --panel:rgba(255,255,255,.06);
-  --stroke:rgba(255,255,255,.10);
-  --text:#eae6ff;
-  --muted:rgba(234,230,255,.72);
-  --accent:#a855f7;
-  --accent2:#7c3aed;
-  --shadow:0 18px 60px rgba(0,0,0,.55);
-  --radius:18px;
+--accent:#a855f7;
+--accent2:#7c3aed;
+--bg:#0b0b14;
+--panel:rgba(255,255,255,.05);
+--stroke:rgba(255,255,255,.08);
+--text:#f5f3ff;
+--muted:rgba(245,243,255,.65);
+--radius:18px;
+--max:1300px;
 }
 
 body{
-  margin:0;
-  font-family:system-ui;
-  background:
-  radial-gradient(1000px 700px at 20% -10%, rgba(168,85,247,.20), transparent 60%),
-  radial-gradient(900px 600px at 90% 10%, rgba(124,58,237,.18), transparent 60%),
-  var(--bg);
-  color:var(--text);
-  padding:30px;
+font-family:'Inter',sans-serif;
+background:radial-gradient(circle at top,#1a1a2b,var(--bg));
+color:var(--text);
+display:flex;
+min-height:100vh;
+overflow-x:hidden;
 }
 
-.home-btn{
-  display:inline-block;
-  margin-bottom:25px;
-  padding:10px 20px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:white;
-  text-decoration:none;
-  font-weight:700;
-  transition:.25s ease;
-  box-shadow:0 6px 20px rgba(124,58,237,.4);
+/* SIDEBAR */
+.sidebar{
+width:260px;
+background:rgba(15,15,25,.85);
+backdrop-filter:blur(18px);
+border-right:1px solid var(--stroke);
+padding:30px 20px;
+position:sticky;
+top:0;
+height:100vh;
+overflow-y:auto;
 }
 
-.home-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 30px rgba(124,58,237,.6);
+.logo{
+font-weight:900;
+font-size:20px;
+color:var(--accent);
+margin-bottom:30px;
+text-decoration:none;
+display:block;
+}
+
+.nav-section{
+margin-bottom:20px;
+}
+
+.nav-section h4{
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:1px;
+color:var(--muted);
+margin-bottom:8px;
+}
+
+.sidebar a{
+display:block;
+padding:8px 10px;
+border-radius:12px;
+text-decoration:none;
+color:rgba(245,243,255,.85);
+font-weight:700;
+font-size:14px;
+transition:.2s;
+}
+
+.sidebar a:hover{
+background:rgba(255,255,255,.06);
+color:#fff;
+}
+
+.sidebar a.active{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+/* MAIN */
+.main{
+flex:1;
+padding:50px;
+max-width:1000px;
+margin:auto;
+}
+
+h1{
+font-size:42px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.lead{
+color:var(--muted);
+margin-bottom:30px;
+line-height:1.7;
+}
+
+.section{
+margin-bottom:60px;
+opacity:0;
+transform:translateY(20px);
+transition:1s;
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.section h2{
+font-size:24px;
+font-weight:900;
+margin-bottom:15px;
 }
 
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
-  padding:22px;
-  margin-bottom:18px;
-  box-shadow:var(--shadow);
+background:var(--panel);
+border:1px solid var(--stroke);
+border-radius:var(--radius);
+padding:20px;
+margin-top:15px;
+backdrop-filter:blur(12px);
 }
 
-h1{ margin-top:0; }
-h2{ margin-bottom:10px; }
-
-ul{
-  padding-left:18px;
-  color:var(--muted);
+.card p{
+color:var(--muted);
+line-height:1.7;
 }
 
-li{
-  margin-bottom:6px;
+/* CODE BLOCK */
+.code{
+background:#0f0f18;
+border:1px solid var(--stroke);
+border-radius:14px;
+padding:15px;
+margin-top:15px;
+font-family:monospace;
+font-size:13px;
+color:#d6bcfa;
+position:relative;
+}
+
+.copy-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:rgba(255,255,255,.08);
+border:none;
+padding:6px 10px;
+border-radius:8px;
+cursor:pointer;
+color:#fff;
+font-size:12px;
+}
+
+.search{
+margin-bottom:30px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:14px;
+border:1px solid var(--stroke);
+background:rgba(255,255,255,.06);
+color:white;
+outline:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+body{flex-direction:column}
+.sidebar{
+width:100%;
+height:auto;
+position:relative;
+border-right:none;
+border-bottom:1px solid var(--stroke);
+}
+.main{padding:30px}
 }
 </style>
 </head>
 
 <body>
 
-<a href="index.html" class="home-btn">← Back to Home</a>
+<div class="sidebar">
+<a href="index.html" class="logo">YZY Tweaks</a>
 
-<h1>YZY Tweaks — Full Documentation</h1>
-
-<!-- SYSTEM SAFETY -->
-<div class="card">
-<h2>System Protection</h2>
-<ul>
-<li><b>Automatic Restore Point</b> – Creates a Windows restore point before applying tweaks to ensure safe rollback.</li>
-</ul>
+<div class="nav-section">
+<h4>Getting Started</h4>
+<a href="#installation">Installation</a>
+<a href="#activation">Activation</a>
+<a href="#profiles">Profiles</a>
 </div>
 
-<!-- WINDOWS TWEAKS -->
+<div class="nav-section">
+<h4>Tweak Categories</h4>
+<a href="#windows">Windows Tweaks</a>
+<a href="#hardware">CPU / GPU / RAM</a>
+<a href="#network">Network Tweaks</a>
+<a href="#debloat">Debloat</a>
+</div>
+
+<div class="nav-section">
+<h4>Advanced</h4>
+<a href="#restore">Restore Points</a>
+<a href="#faq">FAQ</a>
+</div>
+
+</div>
+
+<div class="main">
+
+<h1>Documentation</h1>
+<p class="lead">
+Welcome to the official YZY Tweaks documentation.  
+Everything you need to install, activate, and maximize your performance is below.
+</p>
+
+<div class="search">
+<input type="text" placeholder="Search documentation... (UI only)">
+</div>
+
+<div class="section" id="installation">
+<h2>Installation</h2>
 <div class="card">
+<p>Download the executable from the homepage. No installer required. Simply run the application as administrator.</p>
+<div class="code">
+<button class="copy-btn">Copy</button>
+Run as Administrator → Accept → Select Tweaks → Apply
+</div>
+</div>
+</div>
+
+<div class="section" id="activation">
+<h2>Activation</h2>
+<div class="card">
+<p>After purchasing Pro or Lifetime, you will receive access to premium features via key activation.</p>
+</div>
+</div>
+
+<div class="section" id="profiles">
+<h2>Profiles</h2>
+<div class="card">
+<p>Create Gaming, Streaming, or Balanced profiles to quickly switch performance modes.</p>
+</div>
+</div>
+
+<div class="section" id="windows">
 <h2>Windows Tweaks</h2>
-<ul>
-<li><b>Disable Background Apps</b> – Stops unnecessary background processes to free RAM.</li>
-<li><b>Disable Telemetry</b> – Reduces Windows data tracking services.</li>
-<li><b>Disable Startup Apps</b> – Improves boot time by limiting auto-start programs.</li>
-<li><b>Fast Boot Optimization</b> – Speeds up Windows startup sequence.</li>
-<li><b>Disable Visual Effects</b> – Improves performance by reducing animations.</li>
-</ul>
+<div class="card">
+<p>Compact toggle-based optimizations focused on system responsiveness and reducing background load.</p>
+</div>
 </div>
 
-<!-- CPU -->
+<div class="section" id="hardware">
+<h2>CPU / GPU / RAM Tweaks</h2>
 <div class="card">
-<h2>CPU Tweaks</h2>
-<ul>
-<li><b>High Performance Mode</b> – Forces CPU to maintain higher clock speeds.</li>
-<li><b>Disable CPU Parking</b> – Prevents cores from sleeping for better performance.</li>
-<li><b>Process Priority Boost</b> – Gives active applications higher CPU priority.</li>
-<li><b>Interrupt Optimization</b> – Reduces latency in CPU interrupt handling.</li>
-</ul>
+<p>Hardware-oriented tweaks designed to complement gaming and productivity workloads.</p>
+</div>
 </div>
 
-<!-- GPU -->
-<div class="card">
-<h2>GPU Tweaks</h2>
-<ul>
-<li><b>GPU Scheduling</b> – Enables Hardware Accelerated GPU Scheduling.</li>
-<li><b>Disable Fullscreen Optimizations</b> – Reduces input delay in games.</li>
-<li><b>Graphics Performance Mode</b> – Forces apps to use high-performance GPU.</li>
-<li><b>Shader Cache Optimization</b> – Improves game load times.</li>
-</ul>
-</div>
-
-<!-- RAM -->
-<div class="card">
-<h2>RAM Tweaks</h2>
-<ul>
-<li><b>Memory Cache Cleaner</b> – Frees unused standby memory.</li>
-<li><b>Pagefile Optimization</b> – Optimizes virtual memory configuration.</li>
-<li><b>Disable Memory Compression</b> – Reduces CPU usage from compression.</li>
-<li><b>Large System Cache</b> – Improves file caching performance.</li>
-</ul>
-</div>
-
-<!-- NETWORK -->
-<div class="card">
+<div class="section" id="network">
 <h2>Network Tweaks</h2>
-<ul>
-<li><b>TCP Optimization</b> – Adjusts TCP settings for lower latency.</li>
-<li><b>Disable Nagle’s Algorithm</b> – Reduces delay in packet sending.</li>
-<li><b>DNS Optimization</b> – Speeds up DNS resolution.</li>
-<li><b>Gaming Network Profile</b> – Prioritizes low latency over bandwidth.</li>
-</ul>
+<div class="card">
+<p>Latency-focused adjustments aimed at smoother real-time performance.</p>
+</div>
 </div>
 
-<!-- DEBLOAT -->
+<div class="section" id="debloat">
+<h2>Debloat & Cleaner</h2>
 <div class="card">
-<h2>Debloat</h2>
-<ul>
-<li><b>Remove Bloatware Apps</b> – Deletes unnecessary preinstalled Windows apps.</li>
-<li><b>Disable Cortana</b> – Removes background assistant services.</li>
-<li><b>Disable OneDrive Sync</b> – Stops automatic syncing if unused.</li>
-</ul>
+<p>Remove unnecessary services and keep Windows clean long-term.</p>
+</div>
 </div>
 
-<!-- POWER -->
+<div class="section" id="restore">
+<h2>Restore Points</h2>
 <div class="card">
-<h2>Power Tweaks</h2>
-<ul>
-<li><b>Ultimate Performance Plan</b> – Unlocks hidden high-performance power plan.</li>
-<li><b>Disable Power Throttling</b> – Prevents Windows from slowing apps.</li>
-<li><b>USB Power Fix</b> – Prevents USB devices from sleeping.</li>
-</ul>
+<p>Create restore points before applying advanced tweaks for additional safety.</p>
+</div>
 </div>
 
-<!-- CLEANER -->
+<div class="section" id="faq">
+<h2>FAQ</h2>
 <div class="card">
-<h2>System Cleaner</h2>
-<ul>
-<li><b>Temp File Cleaner</b> – Deletes temporary Windows files.</li>
-<li><b>Prefetch Cleaner</b> – Clears old prefetch data.</li>
-<li><b>Recycle Bin Cleaner</b> – Permanently empties recycle bin.</li>
-</ul>
+<p>If you encounter issues, contact support via Discord.</p>
 </div>
+</div>
+
+</div>
+
+<script>
+/* Reveal animation */
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:.2});
+
+document.querySelectorAll(".section").forEach(sec=>{
+observer.observe(sec);
+});
+
+/* Copy buttons */
+document.querySelectorAll(".copy-btn").forEach(btn=>{
+btn.addEventListener("click",()=>{
+const text=btn.parentElement.innerText.replace("Copy","");
+navigator.clipboard.writeText(text);
+btn.innerText="Copied!";
+setTimeout(()=>btn.innerText="Copy",1500);
+});
+});
+</script>
 
 </body>
 </html>
