@@ -1,1045 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YZY Tweaks — Elite System Optimization</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YZY Tweaks — Elite System Optimization</title>
 
-  <!-- SEO / Social -->
-  <meta name="description" content="YZY Tweaks is elite system optimization software built for serious performance. Faster FPS, lower latency, cleaner Windows, and smarter profiles." />
-  <meta property="og:title" content="YZY Tweaks — Elite System Optimization" />
-  <meta property="og:description" content="Unlock maximum performance with elite system optimization built for serious performance." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#7c3aed" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --accent:#a855f7;
-      --accent2:#7c3aed;
-      --bg:#0b0b14;
-      --panel:rgba(255,255,255,.06);
-      --stroke:rgba(255,255,255,.10);
-      --text:#f5f3ff;
-      --muted:rgba(245,243,255,.70);
-      --shadow:0 30px 90px rgba(0,0,0,.55);
-      --radius:22px;
-      --max:1180px;
-    }
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Inter',sans-serif;
-      background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(168,85,247,.15), transparent 60%),
-        radial-gradient(1200px 800px at 80% 10%, rgba(124,58,237,.14), transparent 60%),
-        radial-gradient(circle at top,#1a1a2b,var(--bg));
-      color:var(--text);
-      overflow-x:hidden;
-    }
+:root{
+--accent:#a855f7;
+--accent2:#7c3aed;
+--bg:#0b0b14;
+--panel:rgba(255,255,255,.06);
+--stroke:rgba(255,255,255,.08);
+--text:#f5f3ff;
+--muted:rgba(245,243,255,.65);
+--radius:22px;
+--max:1200px;
+}
 
-    /* SUBTLE GRID */
-    .grid{
-      position:fixed; inset:0;
-      background-image:
-        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity:.08;
-      pointer-events:none;
-      z-index:-3;
-      mask-image: radial-gradient(circle at 50% 0%, black 10%, transparent 70%);
-    }
+html{scroll-behavior:smooth}
 
-    /* BACKGROUND BLOBS */
-    .blob{
-      position:fixed; width:700px; height:700px; border-radius:50%;
-      filter: blur(60px);
-      opacity:.18;
-      z-index:-2;
-      pointer-events:none;
-      animation: float 10s ease-in-out infinite;
-    }
-    .blob.one{left:-200px; top:-180px; background:var(--accent)}
-    .blob.two{right:-240px; top:-220px; background:var(--accent2); animation-delay: -3s}
-    .blob.three{left:30%; bottom:-420px; background:rgba(88,101,242,.8); animation-delay:-6s}
-    @keyframes float{
-      0%,100%{transform: translateY(0px) translateX(0px) scale(1)}
-      50%{transform: translateY(25px) translateX(15px) scale(1.04)}
-    }
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(1200px 800px at 20% 0%, rgba(168,85,247,.18), transparent 60%),
+radial-gradient(1200px 800px at 80% 0%, rgba(124,58,237,.15), transparent 60%),
+radial-gradient(circle at top,#1a1a2b,var(--bg));
+color:var(--text);
+overflow-x:hidden;
+}
 
-    /* SCROLL PROGRESS */
-    .progress{
-      position:fixed; top:0; left:0; height:4px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      width:0%;
-      z-index:99999;
-    }
+/* subtle grid */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+background-size:60px 60px;
+opacity:.08;
+pointer-events:none;
+mask-image:radial-gradient(circle at 50% 0%, black 10%, transparent 70%);
+}
 
-    /* LOADER */
-    .loader{
-      position:fixed; inset:0;
-      background:#0b0b14;
-      display:flex; flex-direction:column;
-      justify-content:center; align-items:center;
-      z-index:9999;
-      transition: opacity .6s ease;
-      gap:14px;
-    }
-    .loader .ring{
-      width:46px; height:46px; border-radius:50%;
-      border:4px solid rgba(168,85,247,.25);
-      border-top-color: var(--accent);
-      animation: spin 1s linear infinite;
-      box-shadow: 0 0 30px rgba(168,85,247,.25);
-    }
-    .loader h1{
-      font-size:16px;
-      color:var(--muted);
-      letter-spacing:.4px;
-      font-weight:700;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
+/* blobs */
+.blob{
+position:fixed;
+width:700px;
+height:700px;
+border-radius:50%;
+filter:blur(60px);
+opacity:.2;
+z-index:-1;
+animation:float 12s ease-in-out infinite;
+}
+.blob.one{left:-200px;top:-200px;background:var(--accent)}
+.blob.two{right:-200px;top:-220px;background:var(--accent2);animation-delay:-4s}
+.blob.three{left:30%;bottom:-400px;background:#5865F2;animation-delay:-7s}
 
-    /* CURSOR GLOW */
-    .cursor-glow{
-      position:fixed; width:320px; height:320px;
-      background: radial-gradient(circle, rgba(168,85,247,.18), transparent 60%);
-      pointer-events:none; border-radius:50%;
-      transform: translate(-50%, -50%);
-      z-index:-1;
-      mix-blend-mode: screen;
-    }
+@keyframes float{
+0%,100%{transform:translateY(0) translateX(0)}
+50%{transform:translateY(30px) translateX(20px)}
+}
 
-    /* CONTAINER */
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+/* progress bar */
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+width:0%;
+z-index:9999;
+}
 
-    /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:1000;
-      backdrop-filter: blur(20px);
-      background: rgba(15,15,25,.62);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:16px 10px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      text-decoration:none;
-    }
-    .logo{
-      font-weight:900; font-size:20px; color:var(--accent);
-      letter-spacing:.2px;
-    }
-    .pill{
-      font-size:12px; padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(168,85,247,.35);
-      background:rgba(168,85,247,.12);
-      color:rgba(245,243,255,.86);
-      font-weight:800;
-    }
-    .nav-links{display:flex; align-items:center; gap:16px}
-    .nav-links a{
-      color:rgba(245,243,255,.80);
-      text-decoration:none;
-      font-weight:700;
-      font-size:14px;
-      padding:10px 10px;
-      border-radius:12px;
-      transition:.25s;
-    }
-    .nav-links a:hover{
-      color:#fff;
-      background:rgba(255,255,255,.06);
-      box-shadow: 0 10px 40px rgba(0,0,0,.25);
-    }
-    .nav-cta{display:flex; gap:10px; align-items:center}
-    .btn{
-      border:none; cursor:pointer;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:900;
-      color:white;
-      text-decoration:none;
-      transition:.25s;
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      white-space:nowrap;
-    }
-    .btn.primary{
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow: 0 14px 45px rgba(124,58,237,.45);
-    }
-    .btn.primary:hover{transform: translateY(-2px); box-shadow: 0 18px 60px rgba(124,58,237,.58)}
-    .btn.ghost{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(245,243,255,.90);
-    }
-    .btn.ghost:hover{transform: translateY(-2px); background:rgba(255,255,255,.08)}
-    .btn.discord{background:#5865F2}
-    .btn.youtube{background:#ff0000}
-    .btn.discord:hover,.btn.youtube:hover{transform:translateY(-2px)}
+/* container */
+.container{
+max-width:var(--max);
+margin:auto;
+padding:0 20px;
+}
 
-    /* MOBILE MENU */
-    .burger{
-      display:none;
-      width:44px; height:44px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      cursor:pointer;
-      align-items:center; justify-content:center;
-    }
-    .burger span{
-      width:18px; height:2px; background:#fff; display:block;
-      position:relative;
-    }
-    .burger span:before,.burger span:after{
-      content:""; position:absolute; left:0;
-      width:18px; height:2px; background:#fff;
-    }
-    .burger span:before{top:-6px}
-    .burger span:after{top:6px}
-    .mobile{
-      display:none;
-      padding:10px 10px 18px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .mobile a{display:block; margin:8px 0}
-    .mobile .row{display:flex; gap:10px; flex-wrap:wrap}
+/* nav */
+.nav{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(15,15,25,.7);
+backdrop-filter:blur(18px);
+border-bottom:1px solid var(--stroke);
+}
 
-    /* HERO */
-    .hero{
-      padding:68px 0 30px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:28px;
-      align-items:center;
-    }
-    .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(245,243,255,.85);
-      font-weight:800;
-      font-size:13px;
-      width:fit-content;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow: 0 0 18px rgba(168,85,247,.6);
-    }
-    h1{
-      margin-top:16px;
-      font-size:56px;
-      line-height:1.05;
-      letter-spacing:-1px;
-      font-weight:900;
-    }
-    .grad{
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .sub{
-      margin-top:16px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.6;
-      max-width: 58ch;
-    }
-    .hero-actions{
-      margin-top:22px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .trust-row{
-      margin-top:18px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .trust-pill{
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(168,85,247,.10);
-      border:1px solid rgba(168,85,247,.25);
-      color:rgba(245,243,255,.88);
-      font-weight:800;
-      font-size:13px;
-    }
+.nav-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
 
-    /* HERO CARD */
-    .hero-card{
-      background:rgba(30,30,50,.55);
-      border:1px solid rgba(168,85,247,.18);
-      border-radius: var(--radius);
-      padding:20px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(circle at 20% 10%, rgba(168,85,247,.25), transparent 45%),
-                  radial-gradient(circle at 80% 20%, rgba(124,58,237,.22), transparent 50%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .hero-card-inner{position:relative}
-    .mini-title{
-      font-weight:900;
-      color:rgba(245,243,255,.95);
-      font-size:14px;
-      letter-spacing:.2px;
-    }
-    .specs{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .spec{
-      padding:12px;
-      border-radius:16px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .spec .k{font-size:12px;color:rgba(245,243,255,.72);font-weight:800}
-    .spec .v{margin-top:6px;font-size:14px;font-weight:900}
+.logo{
+font-weight:900;
+font-size:20px;
+color:var(--accent);
+text-decoration:none;
+}
 
-    .divider{
-      height:1px; width:100%;
-      background: linear-gradient(to right, transparent, rgba(168,85,247,.55), transparent);
-      margin:38px 0;
-      opacity:.7;
-    }
+.nav-links{
+display:flex;
+gap:18px;
+align-items:center;
+}
 
-    /* SECTION */
-    .section{
-      padding:62px 0;
-      opacity:0;
-      transform: translateY(18px);
-      transition: 1s;
-    }
-    .section.show{opacity:1;transform:translateY(0)}
-    .section h2{
-      font-size:34px; font-weight:900;
-      letter-spacing:-.6px;
-    }
-    .section p.lead{
-      margin-top:12px;
-      color:var(--muted);
-      line-height:1.7;
-      max-width: 70ch;
-    }
+.nav-links a{
+color:rgba(245,243,255,.85);
+text-decoration:none;
+font-weight:700;
+font-size:14px;
+padding:8px 10px;
+border-radius:12px;
+transition:.25s;
+}
 
-    /* FEATURE GRID */
-    .grid3{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      gap:14px;
-    }
-    .card{
-      background: rgba(30,30,50,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      padding:18px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      transition:.25s;
-      position:relative;
-      overflow:hidden;
-    }
-    .card:hover{
-      transform: translateY(-4px);
-      border-color: rgba(168,85,247,.35);
-      box-shadow: 0 22px 80px rgba(0,0,0,.45);
-    }
-    .icon{
-      width:42px;height:42px;border-radius:14px;
-      display:grid; place-items:center;
-      background: rgba(168,85,247,.12);
-      border: 1px solid rgba(168,85,247,.25);
-      box-shadow: 0 0 30px rgba(168,85,247,.12);
-      font-weight:900;
-    }
-    .card h3{margin-top:12px;font-size:16px;font-weight:900}
-    .card p{margin-top:8px;color:var(--muted);line-height:1.7;font-size:14px}
+.nav-links a:hover{
+background:rgba(255,255,255,.06);
+color:#fff;
+}
 
-    /* HOW IT WORKS */
-    .steps{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      gap:14px;
-    }
-    .step{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      position:relative;
-      overflow:hidden;
-    }
-    .step .num{
-      width:34px;height:34px;border-radius:12px;
-      display:grid;place-items:center;
-      font-weight:900;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow: 0 12px 40px rgba(124,58,237,.35);
-      margin-bottom:12px;
-    }
-    .step h4{font-size:15px;font-weight:900}
-    .step p{margin-top:8px;color:var(--muted);line-height:1.7;font-size:14px}
+.nav-cta{
+display:flex;
+gap:10px;
+}
 
-    /* PRICING */
-    .pricing{
-      display:flex;
-      justify-content:center;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-top:24px;
-    }
-    .price-card{
-      width:340px;
-      background: rgba(30,30,50,.70);
-      border: 1px solid rgba(168,85,247,.22);
-      border-radius: 24px;
-      padding: 22px;
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
-      transition:.25s;
-      position: relative;
-      overflow:hidden;
-      transform-style: preserve-3d;
-    }
-    .price-card:hover{transform: translateY(-5px)}
-    .badge{
-      position:absolute;
-      top:16px; right:16px;
-      padding:6px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      background: rgba(168,85,247,.18);
-      border: 1px solid rgba(168,85,247,.35);
-    }
-    .price-card h3{font-size:18px;font-weight:900}
-    .price{
-      margin-top:10px;
-      font-size:40px;
-      font-weight:900;
-      color: var(--accent);
-      letter-spacing:-.6px;
-    }
-    .muted{color:var(--muted);font-size:14px;margin-top:8px}
-    .list{margin-top:14px;list-style:none}
-    .list li{
-      padding:10px 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      color:rgba(245,243,255,.88);
-      font-weight:700;
-      font-size:14px;
-    }
-    .list li:last-child{border-bottom:none}
-    .price-card .btn{width:100%; margin-top:14px}
+.btn{
+border:none;
+cursor:pointer;
+padding:10px 14px;
+border-radius:16px;
+font-weight:800;
+transition:.25s;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+}
 
-    /* VIDEO */
-    .video{
-      margin-top:20px;
-      border-radius: 22px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 20px 80px rgba(0,0,0,.45);
-    }
-    iframe{width:100%; aspect-ratio: 16/9; border:0}
+.btn-primary{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:white;
+box-shadow:0 15px 45px rgba(124,58,237,.45);
+}
 
-    /* TESTIMONIALS */
-    .t-wrap{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .quote{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .quote p{color:rgba(245,243,255,.88);line-height:1.8}
-    .who{margin-top:12px;color:rgba(245,243,255,.82);font-weight:900}
-    .role{color:var(--muted);font-weight:800;font-size:13px;margin-top:2px}
-    .carousel{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(30,30,50,.60);
-      border: 1px solid rgba(168,85,247,.18);
-      box-shadow: 0 18px 70px rgba(0,0,0,.40);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .stars{letter-spacing:2px; font-weight:900}
-    .car-text{color:rgba(245,243,255,.88); line-height:1.8}
-    .car-controls{display:flex; gap:10px}
-    .small{
-      padding:10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      color:#fff;
-      cursor:pointer;
-      font-weight:900;
-      transition:.2s;
-      width:100%;
-    }
-    .small:hover{transform: translateY(-2px); background:rgba(255,255,255,.08)}
+.btn-primary:hover{
+transform:translateY(-3px);
+}
 
-    /* FAQ */
-    .faq{
-      margin-top:18px;
-      max-width: 880px;
-    }
-    details{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      padding:14px 16px;
-      margin:10px 0;
-      transition:.2s;
-    }
-    details[open]{border-color: rgba(168,85,247,.35); box-shadow: 0 18px 70px rgba(0,0,0,.35)}
-    summary{
-      cursor:pointer;
-      font-weight:900;
-      color:rgba(245,243,255,.92);
-      list-style:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    details p{margin-top:10px;color:var(--muted);line-height:1.8}
+.btn-ghost{
+background:rgba(255,255,255,.06);
+border:1px solid var(--stroke);
+color:white;
+}
 
-    /* FOOTER */
-    .footer{
-      padding:50px 0 30px;
-      border-top:1px solid rgba(255,255,255,.08);
-      background: rgba(10,10,18,.35);
-      backdrop-filter: blur(18px);
-    }
-    .foot-grid{
-      display:grid;
-      grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      gap:14px;
-      align-items:start;
-    }
-    .foot-title{font-weight:900; color:rgba(245,243,255,.94)}
-    .foot p{margin-top:10px;color:var(--muted);line-height:1.7}
-    .foot a{display:block;margin-top:10px;color:rgba(245,243,255,.82);text-decoration:none;font-weight:800}
-    .foot a:hover{color:#fff}
-    .copy{
-      margin-top:24px;
-      color:rgba(245,243,255,.55);
-      font-weight:800;
-      font-size:13px;
-      display:flex; justify-content:space-between; gap:12px;
-      flex-wrap:wrap;
-      border-top:1px solid rgba(255,255,255,.08);
-      padding-top:16px;
-    }
+.btn-ghost:hover{
+transform:translateY(-3px);
+}
 
-    /* FLOATING */
-    .floatbar{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:5000;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .fab{
-      width:52px;height:52px;border-radius:18px;
-      display:grid;place-items:center;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(16px);
-      color:#fff;
-      cursor:pointer;
-      transition:.2s;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      font-weight:900;
-    }
-    .fab:hover{transform: translateY(-3px); border-color: rgba(168,85,247,.35)}
-    .fab.primary{
-      background: linear-gradient(135deg,var(--accent),var(--accent2));
-      border:none;
-      box-shadow: 0 18px 70px rgba(124,58,237,.45);
-    }
+/* hero */
+.hero{
+padding:140px 0 100px;
+text-align:center;
+opacity:0;
+transform:translateY(20px);
+transition:1s;
+}
 
-    /* REVEAL */
-    .reveal{opacity:0; transform:translateY(18px); transition: 1s}
-    .reveal.show{opacity:1; transform:translateY(0)}
+.hero.show{
+opacity:1;
+transform:translateY(0);
+}
 
-    /* RESPONSIVE */
-    @media(max-width: 980px){
-      .hero-grid{grid-template-columns:1fr; gap:16px}
-      h1{font-size:44px}
-      .grid3{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr}
-      .t-wrap{grid-template-columns:1fr}
-      .foot-grid{grid-template-columns:1fr 1fr}
-      .nav-links{display:none}
-      .burger{display:flex}
-      .mobile{display:none}
-      .mobile.open{display:block}
-    }
-    @media(max-width: 520px){
-      .foot-grid{grid-template-columns:1fr}
-      h1{font-size:38px}
-    }
-  </style>
+.hero h1{
+font-size:64px;
+font-weight:900;
+line-height:1.05;
+margin-bottom:20px;
+}
+
+.gradient{
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+color:var(--muted);
+max-width:720px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+margin-bottom:40px;
+}
+
+.hero-actions{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+/* pricing */
+.pricing{
+padding:100px 0;
+display:flex;
+justify-content:center;
+gap:22px;
+flex-wrap:wrap;
+}
+
+.card{
+width:340px;
+background:var(--panel);
+border:1px solid var(--stroke);
+border-radius:var(--radius);
+padding:32px;
+backdrop-filter:blur(16px);
+transition:.3s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(168,85,247,.4);
+}
+
+.card h3{
+font-weight:900;
+margin-bottom:10px;
+}
+
+.price{
+font-size:38px;
+font-weight:900;
+color:var(--accent);
+margin-bottom:18px;
+}
+
+.card ul{
+list-style:none;
+margin-bottom:20px;
+}
+
+.card li{
+padding:8px 0;
+border-bottom:1px solid rgba(255,255,255,.06);
+color:var(--muted);
+font-weight:700;
+}
+
+.card li:last-child{border-bottom:none}
+
+/* footer */
+.footer{
+border-top:1px solid var(--stroke);
+padding:50px 0;
+text-align:center;
+color:var(--muted);
+font-weight:700;
+}
+
+@media(max-width:900px){
+.hero h1{font-size:42px}
+.nav-links{display:none}
+}
+</style>
 </head>
 
 <body>
-  <div class="progress"></div>
-  <div class="grid"></div>
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
 
-  <div class="loader">
-    <div class="ring"></div>
-    <h1>Loading YZY Tweaks...</h1>
-  </div>
+<div class="progress"></div>
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
 
-  <div class="cursor-glow"></div>
+<!-- NAV -->
+<div class="nav">
+<div class="container nav-inner">
+<a href="index.html" class="logo">YZY Tweaks</a>
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="index.html">
-        <div class="logo">YZY Tweaks</div>
-        <div class="pill">2026 Edition</div>
-      </a>
+<div class="nav-links">
+<a href="features.html">Features</a>
+<a href="docs.html">Docs</a>
+<a href="benchmarks.html">Benchmarks</a>
+<a href="credibility.html">Credibility</a>
+<a href="download.html">Download</a>
+</div>
 
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#testimonials">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a href="docs.html">Docs</a>
-        <a href="benchmarks.html">Benchmarks</a>
-        <a href="credibility.html">Credibility</a>
-      </div>
+<div class="nav-cta">
+<a class="btn btn-ghost" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
+<a class="btn btn-primary" href="#pricing">Get Started</a>
+</div>
+</div>
+</div>
 
-      <div class="nav-cta">
-        <a class="btn discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
-        <a class="btn youtube" href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
-        <button class="burger" id="burger" aria-label="Open menu"><span></span></button>
-      </div>
-    </div>
+<!-- HERO -->
+<div class="container hero" id="hero">
+<h1>Unlock <span class="gradient">Maximum Performance</span></h1>
+<p>
+Elite system optimization engineered for serious gamers and performance enthusiasts.
+Built with precision. Designed like premium software.
+</p>
 
-    <!-- MOBILE -->
-    <div class="wrap mobile" id="mobileMenu">
-      <a class="btn ghost" href="#features">Features</a>
-      <a class="btn ghost" href="#how">How it works</a>
-      <a class="btn ghost" href="#pricing">Pricing</a>
-      <a class="btn ghost" href="#testimonials">Reviews</a>
-      <a class="btn ghost" href="#faq">FAQ</a>
-      <div class="divider" style="margin:14px 0"></div>
-      <div class="row">
-        <a class="btn ghost" href="docs.html">Docs</a>
-        <a class="btn ghost" href="benchmarks.html">Benchmarks</a>
-        <a class="btn ghost" href="credibility.html">Credibility</a>
-      </div>
-    </div>
-  </div>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#pricing">View Plans</a>
+<a class="btn btn-ghost" href="features.html">Explore Features</a>
+</div>
+</div>
 
-  <!-- HERO -->
-  <div class="wrap hero">
-    <div class="hero-grid reveal">
-      <div>
-        <div class="kicker"><span class="dot"></span> Elite system optimization for serious performance</div>
-        <h1>Unlock <span class="grad">Maximum Performance</span> with YZY Tweaks</h1>
-        <p class="sub">
-          A premium optimization toolkit built to improve responsiveness, reduce latency, and streamline Windows — without the bloat.
-        </p>
+<!-- PRICING -->
+<div class="container pricing" id="pricing">
 
-        <div class="hero-actions">
-          <a class="btn primary" href="#pricing">Get Started</a>
-          <a class="btn ghost" href="#video">Watch Demo</a>
-          <a class="btn ghost" href="YZYToolkit.exe" download>Download Trial</a>
-        </div>
+<div class="card">
+<h3>Trial</h3>
+<div class="price">$0</div>
+<ul>
+<li>Core Tweaks</li>
+<li>Windows Panels</li>
+<li>Hardware Dashboard</li>
+</ul>
+<a class="btn btn-ghost" href="download.html?plan=trial">Download Trial</a>
+</div>
 
-        <div class="trust-row">
-          <div class="trust-pill">✔ Fast setup</div>
-          <div class="trust-pill">✔ Reversible tweaks</div>
-          <div class="trust-pill">✔ Built for Windows</div>
-          <div class="trust-pill">✔ Pro + Lifetime upgrades</div>
-        </div>
-      </div>
+<div class="card">
+<h3>Pro</h3>
+<div class="price">$7</div>
+<ul>
+<li>+20 Advanced Tweaks</li>
+<li>Profiles</li>
+<li>Priority Support</li>
+</ul>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="yeezy5731@gmail.com">
+<input type="hidden" name="item_name" value="YZY Toolkit Pro">
+<input type="hidden" name="amount" value="7.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=pro">
+<button type="submit" class="btn btn-primary">Buy Pro</button>
+</form>
+</div>
 
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <div class="mini-title">Performance Snapshot</div>
-          <div class="specs">
-            <div class="spec"><div class="k">Boost</div><div class="v">FPS Stability</div></div>
-            <div class="spec"><div class="k">Reduce</div><div class="v">Input Latency</div></div>
-            <div class="spec"><div class="k">Clean</div><div class="v">Windows Bloat</div></div>
-            <div class="spec"><div class="k">Control</div><div class="v">Profiles</div></div>
-          </div>
-          <div class="divider" style="margin:18px 0"></div>
-          <div style="color:var(--muted);line-height:1.7;font-weight:800;font-size:13px">
-            Built with a modern dashboard + streamlined tweak panels — designed for speed and clarity.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="card">
+<h3>Lifetime</h3>
+<div class="price">$15</div>
+<ul>
+<li>50+ Tweaks</li>
+<li>Future Updates</li>
+<li>Max Mode</li>
+</ul>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="yeezy5731@gmail.com">
+<input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
+<input type="hidden" name="amount" value="15.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=lifetime">
+<button type="submit" class="btn btn-primary">Buy Lifetime</button>
+</form>
+</div>
 
-  <!-- FEATURES -->
-  <div class="wrap section" id="features">
-    <div class="reveal">
-      <h2>Million-Dollar Features. Zero Mess.</h2>
-      <p class="lead">Everything is built to feel premium: clean UI, compact panels, and tweak sets that are easy to apply and easy to undo.</p>
+</div>
 
-      <div class="grid3">
-        <div class="card">
-          <div class="icon">⚡</div>
-          <h3>Performance Boost</h3>
-          <p>Targeted optimizations to improve system responsiveness and reduce stutters in real gameplay.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🧠</div>
-          <h3>Smart Profiles</h3>
-          <p>Save and swap profiles (Gaming / Streaming / Balanced) so you’re not changing settings nonstop.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🛡️</div>
-          <h3>Reversible & Safer</h3>
-          <p>Designed around changes you can undo (and your Restore Point section can back it up too).</p>
-        </div>
-        <div class="card">
-          <div class="icon">🧼</div>
-          <h3>Cleaner + Debloat</h3>
-          <p>Trim junk, reduce background usage, and keep Windows feeling snappy longer.</p>
-        </div>
-        <div class="card">
-          <div class="icon">📶</div>
-          <h3>Latency Focus</h3>
-          <p>Network tweaks aimed at smoother real-time performance and better stability.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🎛️</div>
-          <h3>Modern UI</h3>
-          <p>Glass panels, glow accents, micro-animations — it feels premium the moment it loads.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="footer">
+© 2026 YZY Tweaks — Engineered for Performance
+</div>
 
-  <!-- HOW IT WORKS -->
-  <div class="wrap section" id="how">
-    <div class="reveal">
-      <h2>How it works</h2>
-      <p class="lead">Simple flow. Pro results.</p>
+<script>
+/* scroll reveal */
+window.addEventListener("load",()=>{
+document.getElementById("hero").classList.add("show");
+});
 
-      <div class="steps">
-        <div class="step">
-          <div class="num">1</div>
-          <h4>Download</h4>
-          <p>Grab the trial instantly or unlock Pro/Lifetime for bigger tweak libraries and profiles.</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h4>Apply Tweaks</h4>
-          <p>Toggle and apply optimization sets designed for performance, stability, and clean Windows.</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h4>Enjoy</h4>
-          <p>Save profiles, swap modes anytime, and keep your system optimized without headaches.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+/* progress bar */
+window.addEventListener("scroll",()=>{
+const top=document.documentElement.scrollTop;
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.querySelector(".progress").style.width=(top/height)*100+"%";
+});
+</script>
 
-  <!-- VIDEO -->
-  <div class="wrap section" id="video">
-    <div class="reveal">
-      <h2>Quick Demo</h2>
-      <p class="lead">YOUTUBE VIDEO.</p>
-      <div class="video">
-        <!-- Replace the video ID with your demo -->
-        <iframe src="https://www.youtube.com/watch?v=iNa6vWieo_0&t=10s" title="YZY Tweaks Demo" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- PRICING -->
-  <div class="wrap section" id="pricing">
-    <div class="reveal">
-      <h2>Pricing</h2>
-      <p class="lead">Start free. Upgrade when you want the bigger libraries and premium unlocks.</p>
-
-      <div class="pricing">
-        <!-- Trial -->
-        <div class="price-card">
-          <div class="badge">FREE</div>
-          <h3>Trial</h3>
-          <div class="price">$0</div>
-          <div class="muted">Start instantly</div>
-          <ul class="list">
-            <li>Core Tweaks</li>
-            <li>Windows Panels</li>
-            <li>Hardware Dashboard</li>
-          </ul>
-          <a class="btn primary" href="YZYToolkit.exe" download>Download Trial</a>
-        </div>
-
-        <!-- Pro -->
-        <div class="price-card">
-          <div class="badge">POPULAR</div>
-          <h3>Pro</h3>
-          <div class="price">$7</div>
-          <div class="muted">+20 advanced tweaks</div>
-          <ul class="list">
-            <li>Advanced Tweaks</li>
-            <li>Profiles</li>
-            <li>Priority Support</li>
-          </ul>
-
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="yeezy5731@gmail.com">
-            <input type="hidden" name="item_name" value="YZY Toolkit Pro">
-            <input type="hidden" name="amount" value="7.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=pro">
-            <button type="submit" class="btn primary">Buy Pro</button>
-          </form>
-        </div>
-
-        <!-- Lifetime -->
-        <div class="price-card">
-          <div class="badge">BEST</div>
-          <h3>Lifetime</h3>
-          <div class="price">$15</div>
-          <div class="muted">Everything unlocked</div>
-          <ul class="list">
-            <li>50+ Tweaks</li>
-            <li>Future Updates</li>
-            <li>Max Mode</li>
-          </ul>
-
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="yeezy5731@gmail.com">
-            <input type="hidden" name="item_name" value="YZY Toolkit Lifetime">
-            <input type="hidden" name="amount" value="15.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="https://yzytweaks.store/success.html?plan=lifetime">
-            <button type="submit" class="btn primary">Buy Lifetime</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TESTIMONIALS -->
-  <div class="wrap section" id="testimonials">
-    <div class="reveal">
-      <h2>Reviews</h2>
-      <p class="lead">Social proof = trust. This section is built to look premium even with just a few quotes.</p>
-
-      <div class="t-wrap">
-        <div class="quote">
-          <p id="quoteText">“YZY Tweaks made my PC feel brand new. Everything is smoother and my game feels way more stable.”</p>
-          <div class="who" id="quoteWho">— Alex R.</div>
-          <div class="role" id="quoteRole">Competitive Gamer</div>
-        </div>
-
-        <div class="carousel">
-          <div>
-            <div class="stars">★★★★★</div>
-            <div class="car-text">Tap through different reviews. You can replace these with real ones anytime.</div>
-          </div>
-          <div class="car-controls">
-            <button class="small" id="prev">Prev</button>
-            <button class="small" id="next">Next</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="wrap section" id="faq">
-    <div class="reveal">
-      <h2>FAQ</h2>
-      <p class="lead">Quick answers that remove purchase hesitation.</p>
-
-      <div class="faq">
-        <details>
-          <summary>Is it safe to use?</summary>
-          <p>YZY Tweaks is designed around reversible changes and best-practice optimization. You can also use Restore Points for extra safety.</p>
-        </details>
-        <details>
-          <summary>Does this work on Windows 10 and 11?</summary>
-          <p>Yes — it’s built around modern Windows builds.</p>
-        </details>
-        <details>
-          <summary>Can I upgrade from Pro to Lifetime later?</summary>
-          <p>Yes. You can upgrade anytime and keep your progress and settings.</p>
-        </details>
-        <details>
-          <summary>Where do I get help?</summary>
-          <p>Use the Discord button in the nav — it’s the fastest way to reach support and announcements.</p>
-        </details>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="wrap foot-grid">
-      <div class="foot">
-        <div class="foot-title">YZY Tweaks</div>
-        <p>Elite optimization for serious performance. Built with modern UI, clean panels, and premium upgrades.</p>
-      </div>
-
-      <div class="foot">
-        <div class="foot-title">Pages</div>
-        <a href="docs.html">Docs</a>
-        <a href="benchmarks.html">Benchmarks</a>
-        <a href="credibility.html">Credibility</a>
-      </div>
-
-      <div class="foot">
-        <div class="foot-title">Product</div>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-      </div>
-
-      <div class="foot">
-        <div class="foot-title">Social</div>
-        <a href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
-        <a href="https://www.youtube.com/@YeezyOnYT1" target="_blank">YouTube</a>
-      </div>
-    </div>
-
-    <div class="wrap copy">
-      <div>© 2026 YZY Tweaks</div>
-      <div>Built for performance • Designed like a premium SaaS</div>
-    </div>
-  </div>
-
-  <!-- FLOATING BUTTONS -->
-  <div class="floatbar">
-    <button class="fab primary" id="goPricing" title="Get started">↘</button>
-    <button class="fab" id="toTop" title="Back to top">↑</button>
-  </div>
-
-  <script>
-    // Loader
-    window.addEventListener("load", () => {
-      const l = document.querySelector(".loader");
-      l.style.opacity = "0";
-      setTimeout(() => l.remove(), 650);
-    });
-
-    // Cursor glow
-    const glow = document.querySelector(".cursor-glow");
-    document.addEventListener("mousemove", (e) => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-
-    // Scroll progress
-    window.addEventListener("scroll", () => {
-      const top = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const p = (top / height) * 100;
-      document.querySelector(".progress").style.width = p + "%";
-    });
-
-    // Reveal on scroll
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) en.target.classList.add("show");
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll(".reveal, .section").forEach(el => obs.observe(el));
-
-    // Mobile menu
-    const burger = document.getElementById("burger");
-    const mobile = document.getElementById("mobileMenu");
-    burger.addEventListener("click", () => {
-      mobile.classList.toggle("open");
-    });
-
-    // Floating buttons
-    document.getElementById("toTop").addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-    document.getElementById("goPricing").addEventListener("click", () => {
-      document.getElementById("pricing").scrollIntoView({ behavior: "smooth" });
-    });
-
-    // Testimonials carousel
-    const reviews = [
-      { t: "“YZY Tweaks made my PC feel brand new. Everything is smoother and my game feels way more stable.”", w: "— Alex R.", r: "Competitive Gamer" },
-      { t: "“Clean UI, easy toggles, and the profiles are actually useful. This feels premium.”", w: "— Sarah L.", r: "Creator + Gamer" },
-      { t: "“The debloat + latency tweaks are clutch. My system is way snappier now.”", w: "— Jay M.", r: "FPS Player" },
-      { t: "“Legit the nicest optimization site + tool combo I’ve seen. Super polished.”", w: "— Mia K.", r: "PC Enthusiast" }
-    ];
-    let i = 0;
-    const qt = document.getElementById("quoteText");
-    const qw = document.getElementById("quoteWho");
-    const qr = document.getElementById("quoteRole");
-
-    function setReview(idx){
-      qt.style.opacity = 0;
-      setTimeout(() => {
-        qt.textContent = reviews[idx].t;
-        qw.textContent = reviews[idx].w;
-        qr.textContent = reviews[idx].r;
-        qt.style.opacity = 1;
-      }, 160);
-    }
-
-    document.getElementById("next").addEventListener("click", () => {
-      i = (i + 1) % reviews.length;
-      setReview(i);
-    });
-    document.getElementById("prev").addEventListener("click", () => {
-      i = (i - 1 + reviews.length) % reviews.length;
-      setReview(i);
-    });
-  </script>
 </body>
 </html>
