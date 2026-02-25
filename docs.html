@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<title>Documentation — YZY Tweaks</title>
+
+<style>
+:root{
+  --bg:#07040d;
+  --panel:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.10);
+  --text:#eae6ff;
+  --muted:rgba(234,230,255,.72);
+  --accent:#a855f7;
+  --accent2:#7c3aed;
+  --shadow:0 18px 60px rgba(0,0,0,.55);
+  --radius:18px;
+}
+
+body{
+  margin:0;
+  font-family:system-ui;
+  background:
+  radial-gradient(1000px 700px at 20% -10%, rgba(168,85,247,.20), transparent 60%),
+  radial-gradient(900px 600px at 90% 10%, rgba(124,58,237,.18), transparent 60%),
+  var(--bg);
+  color:var(--text);
+  padding:30px;
+}
+
+.home-btn{
+  display:inline-block;
+  margin-bottom:25px;
+  padding:10px 20px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  transition:.25s ease;
+  box-shadow:0 6px 20px rgba(124,58,237,.4);
+}
+
+.home-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(124,58,237,.6);
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+
+h1{ margin-top:0; }
+h2{ margin-bottom:10px; }
+
+ul{
+  padding-left:18px;
+  color:var(--muted);
+}
+
+li{
+  margin-bottom:6px;
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="home-btn">← Back to Home</a>
+
+<h1>YZY Tweaks — Full Documentation</h1>
+
+<!-- SYSTEM SAFETY -->
+<div class="card">
+<h2>System Protection</h2>
+<ul>
+<li><b>Automatic Restore Point</b> – Creates a Windows restore point before applying tweaks to ensure safe rollback.</li>
+</ul>
+</div>
+
+<!-- WINDOWS TWEAKS -->
+<div class="card">
+<h2>Windows Tweaks</h2>
+<ul>
+<li><b>Disable Background Apps</b> – Stops unnecessary background processes to free RAM.</li>
+<li><b>Disable Telemetry</b> – Reduces Windows data tracking services.</li>
+<li><b>Disable Startup Apps</b> – Improves boot time by limiting auto-start programs.</li>
+<li><b>Fast Boot Optimization</b> – Speeds up Windows startup sequence.</li>
+<li><b>Disable Visual Effects</b> – Improves performance by reducing animations.</li>
+</ul>
+</div>
+
+<!-- CPU -->
+<div class="card">
+<h2>CPU Tweaks</h2>
+<ul>
+<li><b>High Performance Mode</b> – Forces CPU to maintain higher clock speeds.</li>
+<li><b>Disable CPU Parking</b> – Prevents cores from sleeping for better performance.</li>
+<li><b>Process Priority Boost</b> – Gives active applications higher CPU priority.</li>
+<li><b>Interrupt Optimization</b> – Reduces latency in CPU interrupt handling.</li>
+</ul>
+</div>
+
+<!-- GPU -->
+<div class="card">
+<h2>GPU Tweaks</h2>
+<ul>
+<li><b>GPU Scheduling</b> – Enables Hardware Accelerated GPU Scheduling.</li>
+<li><b>Disable Fullscreen Optimizations</b> – Reduces input delay in games.</li>
+<li><b>Graphics Performance Mode</b> – Forces apps to use high-performance GPU.</li>
+<li><b>Shader Cache Optimization</b> – Improves game load times.</li>
+</ul>
+</div>
+
+<!-- RAM -->
+<div class="card">
+<h2>RAM Tweaks</h2>
+<ul>
+<li><b>Memory Cache Cleaner</b> – Frees unused standby memory.</li>
+<li><b>Pagefile Optimization</b> – Optimizes virtual memory configuration.</li>
+<li><b>Disable Memory Compression</b> – Reduces CPU usage from compression.</li>
+<li><b>Large System Cache</b> – Improves file caching performance.</li>
+</ul>
+</div>
+
+<!-- NETWORK -->
+<div class="card">
+<h2>Network Tweaks</h2>
+<ul>
+<li><b>TCP Optimization</b> – Adjusts TCP settings for lower latency.</li>
+<li><b>Disable Nagle’s Algorithm</b> – Reduces delay in packet sending.</li>
+<li><b>DNS Optimization</b> – Speeds up DNS resolution.</li>
+<li><b>Gaming Network Profile</b> – Prioritizes low latency over bandwidth.</li>
+</ul>
+</div>
+
+<!-- DEBLOAT -->
+<div class="card">
+<h2>Debloat</h2>
+<ul>
+<li><b>Remove Bloatware Apps</b> – Deletes unnecessary preinstalled Windows apps.</li>
+<li><b>Disable Cortana</b> – Removes background assistant services.</li>
+<li><b>Disable OneDrive Sync</b> – Stops automatic syncing if unused.</li>
+</ul>
+</div>
+
+<!-- POWER -->
+<div class="card">
+<h2>Power Tweaks</h2>
+<ul>
+<li><b>Ultimate Performance Plan</b> – Unlocks hidden high-performance power plan.</li>
+<li><b>Disable Power Throttling</b> – Prevents Windows from slowing apps.</li>
+<li><b>USB Power Fix</b> – Prevents USB devices from sleeping.</li>
+</ul>
+</div>
+
+<!-- CLEANER -->
+<div class="card">
+<h2>System Cleaner</h2>
+<ul>
+<li><b>Temp File Cleaner</b> – Deletes temporary Windows files.</li>
+<li><b>Prefetch Cleaner</b> – Clears old prefetch data.</li>
+<li><b>Recycle Bin Cleaner</b> – Permanently empties recycle bin.</li>
+</ul>
+</div>
+
+</body>
+</html>
